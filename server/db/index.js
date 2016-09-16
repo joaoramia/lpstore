@@ -1,6 +1,5 @@
 'use strict';
 var db = require('./_db');
-module.exports = db;
 
 var address = require('./models/address');
 var cart = require('./models/cart');
@@ -15,9 +14,8 @@ item.belongsTo(inventory);
 //Cart relationships
 cart.belongsTo(user);
 cart.belongsTo(address);
-cart.hasMany(item);
 
 //Address relationships
 address.belongsTo(user);
 
-db.sync();
+module.exports = db;
