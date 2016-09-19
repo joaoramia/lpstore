@@ -8,7 +8,15 @@ module.exports = router;
 router.get('/', function (req, res, next) {
 	inventory.findAll()
 	.then(function(inventories) {
-		res.json(inventories)
+		res.json(inventories);
+	})
+	.catch(next);
+});
+
+router.get('/:inventoryId', function (req, res, next) {
+	inventory.findById(req.params.inventoryId)
+	.then(function(inventory) {
+		res.json(inventory);
 	})
 	.catch(next);
 });

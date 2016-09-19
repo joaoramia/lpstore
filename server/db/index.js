@@ -10,6 +10,7 @@ var user = require('./models/user');
 //Item relationships
 item.belongsTo(cart);
 item.belongsTo(inventory);
+item.belongsTo(user);
 
 //Cart relationships
 cart.belongsTo(user);

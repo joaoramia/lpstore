@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var db = require('../db/_db');
 var item = db.model('item');
+var inventory = db.model('inventory');
 
 module.exports = router;
 
