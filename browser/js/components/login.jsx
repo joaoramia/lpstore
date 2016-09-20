@@ -1,60 +1,27 @@
-import React from 'react';
-import {Link} from 'react-router';
+/* ===== ./src/views/Main/Login/Login.js ===== */
+import React, { PropTypes as T } from 'react';
+import {ButtonToolbar, Button} from 'react-bootstrap';
+import AuthService from '../utils/AuthService';
 
-export default class FacebookButton extends React.Component {
-	constructor(props) {
-		super(props);
+const auth = new AuthService('Djw1SY8m1JVF5UbIt1Bls5s3k82eguiC', 'joaoramia.auth0.com');
 
-		this.FB = props.fb;
-
-		this.state = {
-			message: ""
-		};
-
-	}
-
-	componentDidMount() {
-		this.FB.Event.subscribe('auth.logout', 
-			this.onLogout.bind(this));
-		this.FB.Event.subscribe('auth.statusChange', 
-			this.onStatusChange.bind(this));
-	}
-	
-	onStatusChange(response) {
-		console.log( response );
-		var self = this;
-
-		if( response.status === "connected" ) {
-			this.FB.api('/me', function(response) {
-				var message = "Welcome " + response.name;
-				self.setState({
-					message: message
-				});
-			})
-		}
-	}
-
-	onLogout(response) {
-		this.setState({
-			message: ""
-		});
+export class login extends React.Component {
+	static propTypes = {
+		location: T.object,
+		auth: T.instanceOf(AuthService)
 	}
 
 	render() {
+		// const { auth } = this.props;
 		return (
-			<div>
-			<div 
-			className="fb-login-button" 
-			data-max-rows="1" 
-			data-size="xlarge" 
-			data-show-faces="false" 
-			data-auto-logout-link="true"
-			>
+			<div className='loginClass'>
+			<h2>Login</h2>
+			<ButtonToolbar className='loginButton'>
+			<Button bsStyle="primary" onClick={auth.login.bind(this)}>Login</Button>
+			</ButtonToolbar>
 			</div>
-			<div>{this.state.message}</div>
-			</div>
-			);
+			)
 	}
-};
+}
 
-export default FacebookButton;
+export default login;
