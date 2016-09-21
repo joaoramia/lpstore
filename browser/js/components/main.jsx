@@ -20,8 +20,6 @@ const main = React.createClass({
 		}.bind(this));
 	},
 
-	auth: false,
-
 	handleSubmit: function(event) {
 		event.preventDefault();
 		this.sendLogout();
@@ -30,9 +28,7 @@ const main = React.createClass({
 	sendLogout: function(){
 		let main = this;
 		this.serverRequest = $.get(window.location.origin + '/logout', function(response){
-			console.log('sendLogout: ',response);
 			main.state.user = {};
-			console.log('auth: ', main.state.user);
 			main.componentWillMount();
 		});
 	},
@@ -40,14 +36,13 @@ const main = React.createClass({
 	render: function() {
 		return (
 			<div className="main">
+				<h1>welcome {this.state.user.name}</h1>
 				<button><Link to='/cart'>Cart</Link></button>
-				<button><Link to='/login'>Login</Link></button>
 				<button><Link to='/products'>Products</Link></button>
 				<button><Link to='/profile'>Profile</Link></button>
-				<button><Link to='/login'>Login</Link></button>
-				<div className="logout">
+				{ this.state.user ? <div className="logout">
 					<button onClick={this.handleSubmit} className="btn btn-primary" type="submit">logout</button>
-				</div>
+				</div> : <div><button><Link to='/login'>Login</Link></button><button><Link to='/signup'>Sign up</Link></button></div> }
 				{this.props.children}
 			</div>
 		)

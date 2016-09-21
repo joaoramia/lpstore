@@ -40,38 +40,33 @@ app.use(function(req, res, next) {
 });
 
 app.post('/login', function(req, res) {
-	console.log("logging in");
 	user.findOne({where: {email: req.body.email}})
 	.then(function(currentUser){
-		if (!currentUser){
-			console.log('NotCurrentUser: ', currentUser);
-			// res.send('Invalid email or password.');
+		if (!currentUser || !currentUser.correctPassword(req.body.password)){
 			res.send(false);
 		} else {
-			if (req.body.password === currentUser.password) {
-		        // sets a cookie with the currentUser's info
-		        req.session.user = currentUser;
-				console.log("YES!");
-		        // res.redirect('/');
-		        res.send(true);
-		    } else {
-		    	res.send(false);
-		    	// res.send('Invalid email or password.');
-		    }
+	        // sets a cookie with the currentUser's info
+	        req.session.user = currentUser;
+	        res.send(true);
 		}
 	});
 });
 
+app.post('/signup', function(req, res, next) {
+	user.create(req.body)
+	.then(function(newuser){
+		req.session.user = newuser;
+		res.send(true);
+	})
+	.catch(next);
+});
+
 app.get('/logout', function(req, res) {
-	console.log('loggin out');
 	req.session.reset();
-	// res.redirect('/');
 	res.send(false);
 });
 
 app.get('/logged', function(req, res) {
-	console.log('checking logged user: ', req.session.user);
-	// res.redirect('/');
 	res.send(req.session.user);
 });
 

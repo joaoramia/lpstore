@@ -1,15 +1,13 @@
-/* ===== ./src/views/Main/Login/Login.js ===== */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Link} from 'react-router';
-import main from './main';
 
-const login = React.createClass({
+const signup = React.createClass({
 
 	contextTypes: {
     	router: React.PropTypes.object.isRequired
 	},
-
+	
 	handleSubmit: function(event) {
 		event.preventDefault(); //doesn't reload page
 	    this.sendFormData();
@@ -17,23 +15,28 @@ const login = React.createClass({
 
 	sendFormData: function(transition){
 		let formData = {
+			name: ReactDOM.findDOMNode(this.refs.name).value,
 			email: ReactDOM.findDOMNode(this.refs.email).value,
 			password: ReactDOM.findDOMNode(this.refs.password).value
 		}
-		let login = this;
-		this.serverRequest = $.post(window.location.origin + '/login', formData, function(response){
-			if(response) login.context.router.push('/'); //this will redirect to main page after successful login
+		let signup = this;
+		this.serverRequest = $.post(window.location.origin + '/signup', formData, function(response){
+			if(response) signup.context.router.push('/'); //this will redirect to main page after successful login
 		});
 	},
 
 	render: function() {
 		return (
-			<div>
+			<div id='signup'>
 				<button><Link to='/cart'>Cart</Link></button>
 				<button><Link to='/products'>Products</Link></button>
 				<button><Link to='/profile'>Profile</Link></button>
-				<button><Link to='/signup'>Signup</Link></button>
+				<button><Link to='/login'>Login</Link></button>
 				<form onSubmit={this.handleSubmit}>
+					<div className="form-group">
+						<label htmlFor="name">name *</label>
+						<input className="form-control" name="name" ref="name" required type="text" />
+					</div>
 					<div className="form-group">
 						<label htmlFor="email">email *</label>
 						<input className="form-control" name="email" ref="email" required type="text" />
@@ -43,12 +46,12 @@ const login = React.createClass({
 						<input className="form-control" name="password" ref="password" required type="text" />
 					</div>
 					<div className="form-group">
-						<button className="btn btn-primary" type="submit">Log in</button>
+						<button className="btn btn-primary" type="submit">Sign up</button>
 					</div>
 				</form>
 			</div>
-			)
+		)
 	}
 });
 
-export default login;
+export default signup;

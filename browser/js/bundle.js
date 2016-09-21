@@ -95,16 +95,21 @@
 
 	var _login2 = _interopRequireDefault(_login);
 
-	var _logout = __webpack_require__(496);
+	var _signup = __webpack_require__(496);
+
+	var _signup2 = _interopRequireDefault(_signup);
+
+	var _logout = __webpack_require__(497);
 
 	var _logout2 = _interopRequireDefault(_logout);
 
-	var _profile = __webpack_require__(497);
+	var _profile = __webpack_require__(498);
 
 	var _profile2 = _interopRequireDefault(_profile);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	//React, ReactDOM and react-router are being served as a static route for node_modules
 	var routes = _react2.default.createElement(
 		_reactRouter.Router,
 		{ history: _reactRouter.browserHistory },
@@ -114,12 +119,12 @@
 			_react2.default.createElement(_reactRouter.Route, { path: '/cart', component: _cart2.default.cart }),
 			_react2.default.createElement(_reactRouter.Route, { path: '/products', component: _products2.default }),
 			_react2.default.createElement(_reactRouter.Route, { path: 'products/:id', component: _product2.default }),
-			_react2.default.createElement(_reactRouter.Route, { path: '/login', component: _login2.default }),
 			_react2.default.createElement(_reactRouter.Route, { path: '/logout', component: _logout2.default }),
 			_react2.default.createElement(_reactRouter.Route, { path: '/profile', component: _profile2.default })
-		)
-	); //React, ReactDOM and react-router are being served as a static route for node_modules
-
+		),
+		_react2.default.createElement(_reactRouter.Route, { path: '/login', component: _login2.default }),
+		_react2.default.createElement(_reactRouter.Route, { path: '/signup', component: _signup2.default })
+	);
 
 	_reactDom2.default.render(_react2.default.createElement(
 		_reactRouter.Router,
@@ -27216,8 +27221,6 @@
 			}.bind(this));
 		},
 
-		auth: false,
-
 		handleSubmit: function handleSubmit(event) {
 			event.preventDefault();
 			this.sendLogout();
@@ -27226,9 +27229,7 @@
 		sendLogout: function sendLogout() {
 			var main = this;
 			this.serverRequest = $.get(window.location.origin + '/logout', function (response) {
-				console.log('sendLogout: ', response);
 				main.state.user = {};
-				console.log('auth: ', main.state.user);
 				main.componentWillMount();
 			});
 		},
@@ -27238,21 +27239,18 @@
 				'div',
 				{ className: 'main' },
 				_react2.default.createElement(
-					'button',
+					'h1',
 					null,
-					_react2.default.createElement(
-						_reactRouter.Link,
-						{ to: '/cart' },
-						'Cart'
-					)
+					'welcome ',
+					this.state.user.name
 				),
 				_react2.default.createElement(
 					'button',
 					null,
 					_react2.default.createElement(
 						_reactRouter.Link,
-						{ to: '/login' },
-						'Login'
+						{ to: '/cart' },
+						'Cart'
 					)
 				),
 				_react2.default.createElement(
@@ -27273,22 +27271,34 @@
 						'Profile'
 					)
 				),
-				_react2.default.createElement(
-					'button',
-					null,
-					_react2.default.createElement(
-						_reactRouter.Link,
-						{ to: '/login' },
-						'Login'
-					)
-				),
-				_react2.default.createElement(
+				this.state.user ? _react2.default.createElement(
 					'div',
 					{ className: 'logout' },
 					_react2.default.createElement(
 						'button',
 						{ onClick: this.handleSubmit, className: 'btn btn-primary', type: 'submit' },
 						'logout'
+					)
+				) : _react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(
+						'button',
+						null,
+						_react2.default.createElement(
+							_reactRouter.Link,
+							{ to: '/login' },
+							'Login'
+						)
+					),
+					_react2.default.createElement(
+						'button',
+						null,
+						_react2.default.createElement(
+							_reactRouter.Link,
+							{ to: '/signup' },
+							'Sign up'
+						)
 					)
 				),
 				this.props.children
@@ -27333,34 +27343,19 @@
 			router: _react2.default.PropTypes.object.isRequired
 		},
 
-		getInitialState: function getInitialState() {
-			return {
-				type: 'info',
-				message: ''
-			};
-		},
-
 		handleSubmit: function handleSubmit(event) {
 			event.preventDefault(); //doesn't reload page
 			this.sendFormData();
 		},
 
 		sendFormData: function sendFormData(transition) {
-			console.log('this.history: ', this.history);
 			var formData = {
 				email: _reactDom2.default.findDOMNode(this.refs.email).value,
 				password: _reactDom2.default.findDOMNode(this.refs.password).value
 			};
-			console.log('main.setState: ', _main2.default.setState);
 			var login = this;
 			this.serverRequest = $.post(window.location.origin + '/login', formData, function (response) {
-				if (response) login.context.router.push('/');
-				// if(response) browserHistory.push('/#/products');
-				// if (response) {
-				// 	window.location.replace(
-				// 		window.location.origin + '/'
-				// 	);
-				// }
+				if (response) login.context.router.push('/'); //this will redirect to main page after successful login
 			});
 		},
 
@@ -27368,6 +27363,42 @@
 			return _react2.default.createElement(
 				'div',
 				null,
+				_react2.default.createElement(
+					'button',
+					null,
+					_react2.default.createElement(
+						_reactRouter.Link,
+						{ to: '/cart' },
+						'Cart'
+					)
+				),
+				_react2.default.createElement(
+					'button',
+					null,
+					_react2.default.createElement(
+						_reactRouter.Link,
+						{ to: '/products' },
+						'Products'
+					)
+				),
+				_react2.default.createElement(
+					'button',
+					null,
+					_react2.default.createElement(
+						_reactRouter.Link,
+						{ to: '/profile' },
+						'Profile'
+					)
+				),
+				_react2.default.createElement(
+					'button',
+					null,
+					_react2.default.createElement(
+						_reactRouter.Link,
+						{ to: '/signup' },
+						'Signup'
+					)
+				),
 				_react2.default.createElement(
 					'form',
 					{ onSubmit: this.handleSubmit },
@@ -46522,6 +46553,142 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactDom = __webpack_require__(35);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _reactRouter = __webpack_require__(180);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var signup = _react2.default.createClass({
+		displayName: 'signup',
+
+
+		contextTypes: {
+			router: _react2.default.PropTypes.object.isRequired
+		},
+
+		handleSubmit: function handleSubmit(event) {
+			event.preventDefault(); //doesn't reload page
+			this.sendFormData();
+		},
+
+		sendFormData: function sendFormData(transition) {
+			var formData = {
+				name: _reactDom2.default.findDOMNode(this.refs.name).value,
+				email: _reactDom2.default.findDOMNode(this.refs.email).value,
+				password: _reactDom2.default.findDOMNode(this.refs.password).value
+			};
+			var signup = this;
+			this.serverRequest = $.post(window.location.origin + '/signup', formData, function (response) {
+				if (response) signup.context.router.push('/'); //this will redirect to main page after successful login
+			});
+		},
+
+		render: function render() {
+			return _react2.default.createElement(
+				'div',
+				{ id: 'signup' },
+				_react2.default.createElement(
+					'button',
+					null,
+					_react2.default.createElement(
+						_reactRouter.Link,
+						{ to: '/cart' },
+						'Cart'
+					)
+				),
+				_react2.default.createElement(
+					'button',
+					null,
+					_react2.default.createElement(
+						_reactRouter.Link,
+						{ to: '/products' },
+						'Products'
+					)
+				),
+				_react2.default.createElement(
+					'button',
+					null,
+					_react2.default.createElement(
+						_reactRouter.Link,
+						{ to: '/profile' },
+						'Profile'
+					)
+				),
+				_react2.default.createElement(
+					'button',
+					null,
+					_react2.default.createElement(
+						_reactRouter.Link,
+						{ to: '/login' },
+						'Login'
+					)
+				),
+				_react2.default.createElement(
+					'form',
+					{ onSubmit: this.handleSubmit },
+					_react2.default.createElement(
+						'div',
+						{ className: 'form-group' },
+						_react2.default.createElement(
+							'label',
+							{ htmlFor: 'name' },
+							'name *'
+						),
+						_react2.default.createElement('input', { className: 'form-control', name: 'name', ref: 'name', required: true, type: 'text' })
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'form-group' },
+						_react2.default.createElement(
+							'label',
+							{ htmlFor: 'email' },
+							'email *'
+						),
+						_react2.default.createElement('input', { className: 'form-control', name: 'email', ref: 'email', required: true, type: 'text' })
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'form-group' },
+						_react2.default.createElement(
+							'label',
+							{ htmlFor: 'password' },
+							'password *'
+						),
+						_react2.default.createElement('input', { className: 'form-control', name: 'password', ref: 'password', required: true, type: 'text' })
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'form-group' },
+						_react2.default.createElement(
+							'button',
+							{ className: 'btn btn-primary', type: 'submit' },
+							'Sign up'
+						)
+					)
+				)
+			);
+		}
+	});
+
+	exports.default = signup;
+
+/***/ },
+/* 497 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
 	var _reactRouter = __webpack_require__(180);
 
 	var _product = __webpack_require__(494);
@@ -46566,7 +46733,7 @@
 	exports.default = logout;
 
 /***/ },
-/* 497 */
+/* 498 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
