@@ -1,27 +1,59 @@
 /* ===== ./src/views/Main/Login/Login.js ===== */
-import React, { PropTypes as T } from 'react';
-import {ButtonToolbar, Button} from 'react-bootstrap';
-import AuthService from '../utils/AuthService';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {Router, History, browserHistory} from 'react-router';
+import main from './main';
 
-const auth = new AuthService('Djw1SY8m1JVF5UbIt1Bls5s3k82eguiC', 'joaoramia.auth0.com');
+const login = React.createClass({
 
-export class login extends React.Component {
-	static propTypes = {
-		location: T.object,
-		auth: T.instanceOf(AuthService)
-	}
+	contextTypes: {
+    	router: React.PropTypes.object.isRequired
+	},
 
-	render() {
-		// const { auth } = this.props;
+	getInitialState: function() {
+		return {
+			type: 'info',
+			message: ''
+		};
+	},
+
+	handleSubmit: function(event) {
+		event.preventDefault(); //doesn't reload page
+	    this.sendFormData();
+	},
+
+	sendFormData: function(transition){
+		console.log('this.history: ', this.history);
+		let formData = {
+			email: ReactDOM.findDOMNode(this.refs.email).value,
+			password: ReactDOM.findDOMNode(this.refs.password).value
+		}
+		console.log('main.setState: ', main.setState);
+		let login = this;
+		this.serverRequest = $.post(window.location.origin + '/login', formData, function(response){
+			if(response) login.context.router.push('/');
+		});
+	},
+
+	render: function() {
 		return (
-			<div className='loginClass'>
-			<h2>Login</h2>
-			<ButtonToolbar className='loginButton'>
-			<Button bsStyle="primary" onClick={auth.login.bind(this)}>Login</Button>
-			</ButtonToolbar>
+			<div>
+				<form onSubmit={this.handleSubmit}>
+					<div className="form-group">
+						<label htmlFor="email">email *</label>
+						<input className="form-control" name="email" ref="email" required type="text" />
+					</div>
+					<div className="form-group">
+						<label htmlFor="password">password *</label>
+						<input className="form-control" name="password" ref="password" required type="text" />
+					</div>
+					<div className="form-group">
+						<button className="btn btn-primary" type="submit">Log in</button>
+					</div>
+				</form>
 			</div>
 			)
 	}
-}
+});
 
 export default login;

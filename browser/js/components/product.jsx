@@ -21,9 +21,6 @@ const product = React.createClass({
 	},
 
 	render: function() {
-		// let addToCart = function(id){
-		// 	$.post(window.location.origin + '/api/item', {inventoryId: this.state.indents.id})
-		// }
 		return (
 			<div className='product'>
 				<h3>{this.state.indents.title} ${this.state.indents.price}</h3>
