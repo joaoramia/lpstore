@@ -12,8 +12,8 @@ module.exports = {
 		"callbackURL": "http://localhost:1337/auth/facebook/callback"
 	},
 	"GOOGLE": {
-		"clientID": "766064247510-p8b6gg4i61np46n5bb43ungae3sltpme.apps.googleusercontent.com",
-		"clientSecret": "PB1ErPkAsr63s5zUymapXJAo",
-		"callbackURL": "http://127.0.0.1:1337/auth/google/callback"
+		"clientID": "824703239137-t07hihd911u5bvkai3v4eg6i1oafu1vc.apps.googleusercontent.com",
+		"clientSecret": "4xD6FZIFT_uXrAjPzvb3AiPx",
+		"callbackURL": "https://lpstore.appspot.com/auth/google/callback"
 	}
 };
