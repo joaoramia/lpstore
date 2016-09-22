@@ -2,30 +2,32 @@
 
 var router = require('express').Router();
 var passport = require('passport');
-var GoogleStrategy = require('passport-google-oauth20').Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
 var db = require('../db');
 var user = db.model('user');
 
 module.exports = router;
 
-var googleCredentials = {
-    clientID: '824703239137-t07hihd911u5bvkai3v4eg6i1oafu1vc.apps.googleusercontent.com',
-    clientSecret: '4xD6FZIFT_uXrAjPzvb3AiPx',
-    callbackURL: 'http://localhost:3030/auth/google/callback' //to be updated
+var facebookCredentials = {
+    clientID: '252171888512524',
+    clientSecret: '27e57eb811ef58518746a5d5f2050f78',
+    callbackURL: 'http://localhost:3030/auth/facebook/callback',
+    profileFields: ["id", "emails", "displayName"]
 };
 
 var verifyCallback = function (accessToken, refreshToken, profile, done) {
+    
     user.findOne({
             where: {
-                google_id: profile.id
+                facebook_id: profile.id
             }
         })
-        .then(function (userfound) {
-            if (userfound) {
-                return userfound;
+        .then(function (founduser) {
+            if (founduser) {
+                return founduser;
             } else {
                 return user.create({
-                    google_id: profile.id,
+                    facebook_id: profile.id,
                     name: profile.displayName,
                     email: profile.emails ? profile.emails[0].value : [profile.username , 'no-email.com'].join('@')
                 });
@@ -35,27 +37,27 @@ var verifyCallback = function (accessToken, refreshToken, profile, done) {
             done(null, userToLogin);
         })
         .catch(function (err) {
-            console.error('Error creating user from Google authentication', err);
+            console.error('Error creating user from Facebook authentication', err);
             done(err);
-        });
+        })
 
 };
 
-passport.use(new GoogleStrategy(googleCredentials, verifyCallback));
+passport.use(new FacebookStrategy(facebookCredentials, verifyCallback));
 
-router.get('/', function (req, res, next) {
-        if (req.query.return) {
+router.get('/', function(req, res, next){
+    if (req.query.return) {
             req.session.oauth2return = req.query.return;
         }
         next();
     },
-    passport.authenticate('google', { scope: ['email', 'profile'] })
+    passport.authenticate('facebook', { scope: 'email'})
 );
 
 router.get('/callback',
-    passport.authenticate('google', {failureRedirect: '/login'}),
+    passport.authenticate('facebook', {failureRedirect: '/login'}),
     function (req, res) {
-        var redirect = req.session.oauth2return || '/';
+        var redirect = req.session.oauth2return || '/#'; //the hash here is specific to facebook, as it redirects to #_=_ if not specified
         delete req.session.oauth2return;
         user.findOne({where: {email: req.user.email}})
         .then(function(currentUser){
@@ -64,9 +66,4 @@ router.get('/callback',
         });
     }
 );
-
-
-
-
-
 

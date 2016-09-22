@@ -27359,6 +27359,32 @@
 			});
 		},
 
+		handleGoogleLogin: function handleGoogleLogin(event) {
+			// event.preventDefault();
+			this.googleLogin();
+		},
+
+		googleLogin: function googleLogin() {
+			// this.serverRequest = $.get(window.location.origin + '/auth/google');
+			window.location = window.location.origin + '/auth/google';
+			this.serverRequest = $.get(window.location.origin + '/logged', function (result) {
+				if (result) login.context.router.push('/'); //this will redirect to main page after successful login
+			}.bind(this));
+		},
+
+		handleFacebookLogin: function handleFacebookLogin(event) {
+			// event.preventDefault();
+			this.facebookLogin();
+		},
+
+		facebookLogin: function facebookLogin() {
+			// this.serverRequest = $.get(window.location.origin + '/auth/google');
+			window.location = window.location.origin + '/auth/facebook';
+			this.serverRequest = $.get(window.location.origin + '/logged', function (result) {
+				if (result) login.context.router.push('/'); //this will redirect to main page after successful login
+			}.bind(this));
+		},
+
 		render: function render() {
 			return _react2.default.createElement(
 				'div',
@@ -27423,14 +27449,23 @@
 						_react2.default.createElement('input', { className: 'form-control', name: 'password', ref: 'password', required: true, type: 'text' })
 					),
 					_react2.default.createElement(
-						'div',
-						{ className: 'form-group' },
-						_react2.default.createElement(
-							'button',
-							{ className: 'btn btn-primary', type: 'submit' },
-							'Log in'
-						)
+						'a',
+						{ onClick: this.handleSubmit, className: 'btn btn-block btn-social btn-github', type: 'submit' },
+						_react2.default.createElement('span', { className: 'fa' }),
+						'Sign in'
 					)
+				),
+				_react2.default.createElement(
+					'a',
+					{ onClick: this.handleGoogleLogin, className: 'btn btn-block btn-social btn-google', type: 'submit' },
+					_react2.default.createElement('span', { className: 'fa fa-google' }),
+					'Sign in with Google'
+				),
+				_react2.default.createElement(
+					'a',
+					{ onClick: this.handleFacebookLogin, className: 'btn btn-block btn-social btn-facebook', type: 'submit' },
+					_react2.default.createElement('span', { className: 'fa fa-facebook' }),
+					'Sign in with Facebook'
 				)
 			);
 		}
@@ -46586,6 +46621,30 @@
 			});
 		},
 
+		handleGoogleLogin: function handleGoogleLogin(event) {
+			this.googleLogin();
+		},
+
+		googleLogin: function googleLogin() {
+			window.location = window.location.origin + '/auth/google';
+			this.serverRequest = $.get(window.location.origin + '/logged', function (result) {
+				if (result) login.context.router.push('/'); //this will redirect to main page after successful login
+			}.bind(this));
+		},
+
+		handleFacebookLogin: function handleFacebookLogin(event) {
+			// event.preventDefault();
+			this.facebookLogin();
+		},
+
+		facebookLogin: function facebookLogin() {
+			// this.serverRequest = $.get(window.location.origin + '/auth/google');
+			window.location = window.location.origin + '/auth/facebook';
+			this.serverRequest = $.get(window.location.origin + '/logged', function (result) {
+				if (result) login.context.router.push('/'); //this will redirect to main page after successful login
+			}.bind(this));
+		},
+
 		render: function render() {
 			return _react2.default.createElement(
 				'div',
@@ -46660,14 +46719,23 @@
 						_react2.default.createElement('input', { className: 'form-control', name: 'password', ref: 'password', required: true, type: 'text' })
 					),
 					_react2.default.createElement(
-						'div',
-						{ className: 'form-group' },
-						_react2.default.createElement(
-							'button',
-							{ className: 'btn btn-primary', type: 'submit' },
-							'Sign up'
-						)
+						'a',
+						{ onClick: this.handleSubmit, className: 'btn btn-block btn-social btn-github', type: 'submit' },
+						_react2.default.createElement('span', { className: 'fa' }),
+						'Sign up'
 					)
+				),
+				_react2.default.createElement(
+					'a',
+					{ onClick: this.handleGoogleLogin, className: 'btn btn-block btn-social btn-google', type: 'submit' },
+					_react2.default.createElement('span', { className: 'fa fa-google' }),
+					'Sign in with Google'
+				),
+				_react2.default.createElement(
+					'a',
+					{ onClick: this.handleFacebookLogin, className: 'btn btn-block btn-social btn-facebook', type: 'submit' },
+					_react2.default.createElement('span', { className: 'fa fa-facebook' }),
+					'Sign in with Facebook'
 				)
 			);
 		}

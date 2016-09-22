@@ -26,6 +26,32 @@ const login = React.createClass({
 		});
 	},
 
+	handleGoogleLogin: function(event) {
+		// event.preventDefault();
+		this.googleLogin();
+	},
+
+	googleLogin: function(){
+		// this.serverRequest = $.get(window.location.origin + '/auth/google');
+		window.location = window.location.origin + '/auth/google';
+		this.serverRequest = $.get(window.location.origin + '/logged', function (result) {
+			if(result) login.context.router.push('/'); //this will redirect to main page after successful login
+		}.bind(this));
+	},
+
+	handleFacebookLogin: function(event) {
+		// event.preventDefault();
+		this.facebookLogin();
+	},
+
+	facebookLogin: function(){
+		// this.serverRequest = $.get(window.location.origin + '/auth/google');
+		window.location = window.location.origin + '/auth/facebook';
+		this.serverRequest = $.get(window.location.origin + '/logged', function (result) {
+			if(result) login.context.router.push('/'); //this will redirect to main page after successful login
+		}.bind(this));
+	},
+
 	render: function() {
 		return (
 			<div>
@@ -42,10 +68,10 @@ const login = React.createClass({
 						<label htmlFor="password">password *</label>
 						<input className="form-control" name="password" ref="password" required type="text" />
 					</div>
-					<div className="form-group">
-						<button className="btn btn-primary" type="submit">Log in</button>
-					</div>
+					<a onClick={this.handleSubmit} className="btn btn-block btn-social btn-github" type="submit"><span className="fa"></span>Sign in</a>
 				</form>
+				<a onClick={this.handleGoogleLogin} className="btn btn-block btn-social btn-google" type="submit"><span className="fa fa-google"></span>Sign in with Google</a>
+				<a onClick={this.handleFacebookLogin} className="btn btn-block btn-social btn-facebook" type="submit"><span className="fa fa-facebook"></span>Sign in with Facebook</a>
 			</div>
 			)
 	}
