@@ -57,8 +57,13 @@ router.post('/login', function(req, res) {
 router.post('/signup', function(req, res, next) {
 	user.create(req.body)
 	.then(function(newuser){
-		req.session.user = newuser;
-		res.send(true);
+		if(newuser){
+			req.session.user = newuser;
+			res.send(true);
+		}
+		else {
+			res.send(false);
+		}
 	})
 	.catch(next);
 });

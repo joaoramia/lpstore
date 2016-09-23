@@ -11,9 +11,7 @@ const main = React.createClass({
 	},
 
 	componentWillMount: function() {
-		console.log('this.props.children: ', this.props.children);
 		this.serverRequest = $.get(window.location.origin + '/logged', function (result) {
-			console.log('result: ', result);
 			this.setState({
 				user: result
 			});
@@ -36,13 +34,13 @@ const main = React.createClass({
 	render: function() {
 		return (
 			<div className="main">
-				<h1>welcome {this.state.user.name}</h1>
-				<button><Link to='/cart'>Cart</Link></button>
-				<button><Link to='/products'>Products</Link></button>
-				<button><Link to='/profile'>Profile</Link></button>
-				{ this.state.user ? <div className="logout">
-					<button onClick={this.handleSubmit} className="btn btn-primary" type="submit">logout</button>
-				</div> : <div><button><Link to='/login'>Login</Link></button><button><Link to='/signup'>Sign up</Link></button></div> }
+				<div className="nav">
+					<Link to='/cart'>Cart</Link>
+					<Link to='/products'>Products</Link>
+					<Link to='/profile'>Profile</Link>
+				</div>
+				{ this.state.user ? <div className="logout"><input type="submit" onClick={this.handleSubmit} value="logout"></input></div> : <div className="signin"><Link to='/login'>Login</Link><Link to='/signup'>Sign up</Link></div> }
+				<h5 className="welcome">{this.state.user.name}</h5>
 				{this.props.children}
 			</div>
 		)

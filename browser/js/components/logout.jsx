@@ -12,10 +12,7 @@ const logout = React.createClass({
 	},
 
 	sendLogout: function(){
-		this.serverRequest = $.get(window.location.origin + '/logout', function(response){
-			console.log('auth: ', main.auth);
-			// console.log(response);
-		});
+		this.serverRequest = $.get(window.location.origin + '/logout');
 	},
 
 	render: function() {

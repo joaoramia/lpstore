@@ -55,10 +55,14 @@ const login = React.createClass({
 	render: function() {
 		return (
 			<div>
-				<button><Link to='/cart'>Cart</Link></button>
-				<button><Link to='/products'>Products</Link></button>
-				<button><Link to='/profile'>Profile</Link></button>
-				<button><Link to='/signup'>Signup</Link></button>
+				<div className="nav">
+					<Link to='/cart'>Cart</Link>
+					<Link to='/products'>Products</Link>
+					<Link to='/profile'>Profile</Link>
+				</div>
+				<div className="signin">
+					<Link to='/signup'>Signup</Link>
+				</div>
 				<form onSubmit={this.handleSubmit}>
 					<div className="form-group">
 						<label htmlFor="email">email *</label>

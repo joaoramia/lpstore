@@ -116,7 +116,7 @@
 		_react2.default.createElement(
 			_reactRouter.Route,
 			{ path: '/', component: _main2.default },
-			_react2.default.createElement(_reactRouter.Route, { path: '/cart', component: _cart2.default.cart }),
+			_react2.default.createElement(_reactRouter.Route, { path: '/cart', component: _cart2.default }),
 			_react2.default.createElement(_reactRouter.Route, { path: '/products', component: _products2.default }),
 			_react2.default.createElement(_reactRouter.Route, { path: 'products/:id', component: _product2.default }),
 			_react2.default.createElement(_reactRouter.Route, { path: '/logout', component: _logout2.default }),
@@ -27212,9 +27212,7 @@
 		},
 
 		componentWillMount: function componentWillMount() {
-			console.log('this.props.children: ', this.props.children);
 			this.serverRequest = $.get(window.location.origin + '/logged', function (result) {
-				console.log('result: ', result);
 				this.setState({
 					user: result
 				});
@@ -27239,32 +27237,18 @@
 				'div',
 				{ className: 'main' },
 				_react2.default.createElement(
-					'h1',
-					null,
-					'welcome ',
-					this.state.user.name
-				),
-				_react2.default.createElement(
-					'button',
-					null,
+					'div',
+					{ className: 'nav' },
 					_react2.default.createElement(
 						_reactRouter.Link,
 						{ to: '/cart' },
 						'Cart'
-					)
-				),
-				_react2.default.createElement(
-					'button',
-					null,
+					),
 					_react2.default.createElement(
 						_reactRouter.Link,
 						{ to: '/products' },
 						'Products'
-					)
-				),
-				_react2.default.createElement(
-					'button',
-					null,
+					),
 					_react2.default.createElement(
 						_reactRouter.Link,
 						{ to: '/profile' },
@@ -27274,32 +27258,25 @@
 				this.state.user ? _react2.default.createElement(
 					'div',
 					{ className: 'logout' },
-					_react2.default.createElement(
-						'button',
-						{ onClick: this.handleSubmit, className: 'btn btn-primary', type: 'submit' },
-						'logout'
-					)
+					_react2.default.createElement('input', { type: 'submit', onClick: this.handleSubmit, value: 'logout' })
 				) : _react2.default.createElement(
 					'div',
-					null,
+					{ className: 'signin' },
 					_react2.default.createElement(
-						'button',
-						null,
-						_react2.default.createElement(
-							_reactRouter.Link,
-							{ to: '/login' },
-							'Login'
-						)
+						_reactRouter.Link,
+						{ to: '/login' },
+						'Login'
 					),
 					_react2.default.createElement(
-						'button',
-						null,
-						_react2.default.createElement(
-							_reactRouter.Link,
-							{ to: '/signup' },
-							'Sign up'
-						)
+						_reactRouter.Link,
+						{ to: '/signup' },
+						'Sign up'
 					)
+				),
+				_react2.default.createElement(
+					'h5',
+					{ className: 'welcome' },
+					this.state.user.name
 				),
 				this.props.children
 			);
@@ -27390,26 +27367,18 @@
 				'div',
 				null,
 				_react2.default.createElement(
-					'button',
-					null,
+					'div',
+					{ className: 'nav' },
 					_react2.default.createElement(
 						_reactRouter.Link,
 						{ to: '/cart' },
 						'Cart'
-					)
-				),
-				_react2.default.createElement(
-					'button',
-					null,
+					),
 					_react2.default.createElement(
 						_reactRouter.Link,
 						{ to: '/products' },
 						'Products'
-					)
-				),
-				_react2.default.createElement(
-					'button',
-					null,
+					),
 					_react2.default.createElement(
 						_reactRouter.Link,
 						{ to: '/profile' },
@@ -27417,8 +27386,8 @@
 					)
 				),
 				_react2.default.createElement(
-					'button',
-					null,
+					'div',
+					{ className: 'signin' },
 					_react2.default.createElement(
 						_reactRouter.Link,
 						{ to: '/signup' },
@@ -46405,14 +46374,22 @@
 			this.serverRequest.abort();
 		},
 
+		addItem: function addItem(id) {
+			this.serverRequest = $.post(window.location.origin + '/api/item/add/' + id, function (result) {
+				if (result) this.setState({ items: result });
+			}.bind(this));
+		},
+
 		render: function render() {
+			var _this = this;
+
 			var indents = [];
 
 			this.state.indents.forEach(function (item) {
 				var pathId = '/products/' + item.id;
 				indents.push(_react2.default.createElement(
 					'div',
-					{ className: 'products', key: item.title },
+					{ className: 'product', key: item.id },
 					_react2.default.createElement(
 						_reactRouter.Link,
 						{ to: pathId },
@@ -46424,13 +46401,16 @@
 							item.price
 						),
 						_react2.default.createElement('img', { src: item.image_url })
-					)
+					),
+					_react2.default.createElement('input', { type: 'submit', value: 'add to cart', onClick: function onClick() {
+							return _this.addItem(item.id);
+						} })
 				));
 			});
 
 			return _react2.default.createElement(
 				'div',
-				{ className: 'productsWrapper' },
+				{ className: 'products' },
 				indents
 			);
 		}
@@ -46477,10 +46457,14 @@
 			this.serverRequest.abort();
 		},
 
+		addItem: function addItem() {
+			this.serverRequest = $.post(window.location.origin + '/api/item/add/' + this.props.params.id, function (result) {}.bind(this));
+		},
+
 		render: function render() {
 			return _react2.default.createElement(
 				'div',
-				{ className: 'product' },
+				{ className: 'item' },
 				_react2.default.createElement(
 					'h3',
 					null,
@@ -46494,7 +46478,7 @@
 					null,
 					this.state.indents.description
 				),
-				_react2.default.createElement('input', { type: 'submit', value: 'Add to cart' })
+				_react2.default.createElement('input', { type: 'submit', value: 'Add to cart', onClick: this.addItem })
 			);
 		}
 	});
@@ -46511,8 +46495,6 @@
 		value: true
 	});
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -46521,58 +46503,85 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	var cart = _react2.default.createClass({
+		displayName: 'cart',
 
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+		getInitialState: function getInitialState() {
+			return {
+				items: {}
+			};
+		},
 
-	var addButton = _react2.default.createClass({
-		displayName: 'addButton',
+		componentWillMount: function componentWillMount() {
+			this.serverRequest = $.get(window.location.origin + '/api/item', function (result) {
+				this.setState({
+					items: result
+				});
+			}.bind(this));
+		},
 
+		componentWillUnmount: function componentWillUnmount() {
+			this.serverRequest.abort();
+		},
+
+		addItem: function addItem(id) {
+			this.serverRequest = $.post(window.location.origin + '/api/item/add/' + id, function (result) {
+				if (result) this.setState({ items: result });
+			}.bind(this));
+		},
+
+		removeItem: function removeItem(id) {
+			this.serverRequest = $.post(window.location.origin + '/api/item/remove/' + id, function (result) {
+				this.setState({ items: result });
+			}.bind(this));
+		},
 
 		render: function render() {
+			var _this = this;
+
+			var items = [];
+			Object.keys(this.state.items).forEach(function (key) {
+				var pathId = '/products/' + key;
+				items.push(_react2.default.createElement(
+					'div',
+					{ key: key, className: 'product' },
+					_react2.default.createElement(
+						_reactRouter.Link,
+						{ to: pathId },
+						_react2.default.createElement(
+							'h3',
+							null,
+							_this.state.items[key].title,
+							': ',
+							_this.state.items[key].quantity
+						),
+						_react2.default.createElement('img', { src: _this.state.items[key].image_url })
+					),
+					_react2.default.createElement('input', { type: 'submit', value: '+', onClick: function onClick() {
+							return _this.addItem(key);
+						} }),
+					_react2.default.createElement('input', { type: 'submit', value: '-', onClick: function onClick() {
+							return _this.removeItem(key);
+						} }),
+					_react2.default.createElement(
+						'h4',
+						null,
+						'in stock: ',
+						_this.state.items[key].inStock
+					)
+				));
+			});
+
 			return _react2.default.createElement(
 				'div',
-				{ className: 'addButton' },
-				_react2.default.createElement('input', { type: 'submit', value: 'Add to cart' })
+				{ className: 'products' },
+				items
 			);
 		}
 	});
 
-	var cart = function (_React$Component) {
-		_inherits(cart, _React$Component);
-
-		function cart() {
-			_classCallCheck(this, cart);
-
-			return _possibleConstructorReturn(this, (cart.__proto__ || Object.getPrototypeOf(cart)).apply(this, arguments));
-		}
-
-		_createClass(cart, [{
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'div',
-					{ className: 'cart' },
-					_react2.default.createElement(
-						'h3',
-						null,
-						'Welcome to the'
-					),
-					_react2.default.createElement(
-						'h3',
-						null,
-						'Donor Finder App!'
-					)
-				);
-			}
-		}]);
-
-		return cart;
-	}(_react2.default.Component);
-
-	exports.default = { cart: cart, addButton: addButton };
+	exports.default = cart;
 
 /***/ },
 /* 496 */
@@ -46616,9 +46625,11 @@
 				password: _reactDom2.default.findDOMNode(this.refs.password).value
 			};
 			var signup = this;
-			this.serverRequest = $.post(window.location.origin + '/signup', formData, function (response) {
-				if (response) signup.context.router.push('/'); //this will redirect to main page after successful login
-			});
+			if (formData.name && formData.email && formData.password) {
+				this.serverRequest = $.post(window.location.origin + '/signup', formData, function (response) {
+					if (response) signup.context.router.push('/'); //this will redirect to main page after successful login
+				});
+			}
 		},
 
 		handleGoogleLogin: function handleGoogleLogin(event) {
@@ -46650,39 +46661,47 @@
 				'div',
 				{ id: 'signup' },
 				_react2.default.createElement(
-					'button',
-					null,
+					'div',
+					{ className: 'nav' },
 					_react2.default.createElement(
-						_reactRouter.Link,
-						{ to: '/cart' },
-						'Cart'
+						'button',
+						null,
+						_react2.default.createElement(
+							_reactRouter.Link,
+							{ to: '/cart' },
+							'Cart'
+						)
+					),
+					_react2.default.createElement(
+						'button',
+						null,
+						_react2.default.createElement(
+							_reactRouter.Link,
+							{ to: '/products' },
+							'Products'
+						)
+					),
+					_react2.default.createElement(
+						'button',
+						null,
+						_react2.default.createElement(
+							_reactRouter.Link,
+							{ to: '/profile' },
+							'Profile'
+						)
 					)
 				),
 				_react2.default.createElement(
-					'button',
-					null,
+					'div',
+					{ className: 'signin' },
 					_react2.default.createElement(
-						_reactRouter.Link,
-						{ to: '/products' },
-						'Products'
-					)
-				),
-				_react2.default.createElement(
-					'button',
-					null,
-					_react2.default.createElement(
-						_reactRouter.Link,
-						{ to: '/profile' },
-						'Profile'
-					)
-				),
-				_react2.default.createElement(
-					'button',
-					null,
-					_react2.default.createElement(
-						_reactRouter.Link,
-						{ to: '/login' },
-						'Login'
+						'button',
+						null,
+						_react2.default.createElement(
+							_reactRouter.Link,
+							{ to: '/login' },
+							'Login'
+						)
 					)
 				),
 				_react2.default.createElement(
@@ -46779,10 +46798,7 @@
 		},
 
 		sendLogout: function sendLogout() {
-			this.serverRequest = $.get(window.location.origin + '/logout', function (response) {
-				console.log('auth: ', _main2.default.auth);
-				// console.log(response);
-			});
+			this.serverRequest = $.get(window.location.origin + '/logout');
 		},
 
 		render: function render() {

@@ -20,13 +20,18 @@ const product = React.createClass({
 		this.serverRequest.abort();
 	},
 
+	addItem: function() {
+		this.serverRequest = $.post(window.location.origin + '/api/item/add/' + this.props.params.id, function (result) {
+		}.bind(this));
+	},
+
 	render: function() {
 		return (
-			<div className='product'>
+			<div className='item'>
 				<h3>{this.state.indents.title} ${this.state.indents.price}</h3>
 				<img src={this.state.indents.image_url} ></img>
 				<p>{this.state.indents.description}</p>
-				<input type="submit" value="Add to cart"></input>
+				<input type="submit" value="Add to cart" onClick={this.addItem}></input>
 			</div>
 		)
 	}

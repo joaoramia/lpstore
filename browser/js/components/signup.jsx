@@ -20,9 +20,11 @@ const signup = React.createClass({
 			password: ReactDOM.findDOMNode(this.refs.password).value
 		}
 		let signup = this;
-		this.serverRequest = $.post(window.location.origin + '/signup', formData, function(response){
-			if(response) signup.context.router.push('/'); //this will redirect to main page after successful login
-		});
+		if (formData.name && formData.email && formData.password){
+			this.serverRequest = $.post(window.location.origin + '/signup', formData, function(response){
+				if(response) signup.context.router.push('/'); //this will redirect to main page after successful login
+			});
+		}
 	},
 
 	handleGoogleLogin: function(event) {
@@ -51,11 +53,15 @@ const signup = React.createClass({
 
 	render: function() {
 		return (
-			<div id='signup'>
-				<button><Link to='/cart'>Cart</Link></button>
-				<button><Link to='/products'>Products</Link></button>
-				<button><Link to='/profile'>Profile</Link></button>
-				<button><Link to='/login'>Login</Link></button>
+			<div id="signup">
+				<div className="nav">
+					<button><Link to='/cart'>Cart</Link></button>
+					<button><Link to='/products'>Products</Link></button>
+					<button><Link to='/profile'>Profile</Link></button>
+				</div>
+				<div className="signin">
+					<button><Link to='/login'>Login</Link></button>
+				</div>
 				<form onSubmit={this.handleSubmit}>
 					<div className="form-group">
 						<label htmlFor="name">name *</label>

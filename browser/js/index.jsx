@@ -17,7 +17,7 @@ import profile from './components/profile';
 const routes = (
 <Router history={browserHistory}>
 	<Route path='/' component={main}>
-		<Route path='/cart' component={cart.cart}/>
+		<Route path='/cart' component={cart}/>
 		<Route path='/products' component={products}/>
 		<Route path='products/:id' component={product}/>
 		<Route path='/logout' component={logout}/>

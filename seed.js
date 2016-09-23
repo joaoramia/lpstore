@@ -64,7 +64,47 @@ var seedInventory = function() {
 		type: 'rock',
 		price: 2,
 		description: 'Animalisms is the third British album by British group the Animals. It has a track listing generally similar to the American version, Animalization, that was released two months later.',
-		image_url: 'https://pamemousiki.files.wordpress.com/2009/08/the_animals_animalisms_2003_retail_cd-back.jpg'
+		image_url: 'http://www.propermusic.com/cache/images/f/4/5/f45415730f867c9b833e9450f47e0f19.jpg'
+	}, {
+		title: "Who's Next",
+		author: 'The Who',
+		quantity: 12,
+		type: 'rock',
+		price: 20,
+		description: "Who's Next is the fifth studio album by English rock band The Who. It developed from the aborted Lifehouse project, a multi-media rock opera written by the group's Pete Townshend as a follow-up to the band's 1969 album Tommy.",
+		image_url: 'https://images-na.ssl-images-amazon.com/images/I/61Ab-td5fbL.jpg'
+	}, {
+		title: 'Houses of the Holy',
+		author: 'Led Zeppelin',
+		quantity: 15,
+		type: 'rock',
+		price: 35,
+		description: 'Houses of the Holy is the fifth studio album by English rock band Led Zeppelin, released on 28 March 1973 by Atlantic Records.',
+		image_url: 'http://www.feelnumb.com/wp-content/uploads/2009/10/Led-Zeppelin-Houses-of-the-Holy-album-cover-location-giants-causeway.jpg'
+	}, {
+		title: 'Unknown Pleasures',
+		author: 'Joy Division',
+		quantity: 15,
+		type: 'rock',
+		price: 25,
+		description: "Unknown Pleasures is the debut studio album by the English rock band Joy Division. It followed an abandoned session for RCA Records, and was eventually recorded and mixed over three weekends at Strawberry Studios, Stockport in April 1979 with record producer Martin Hannett. The album was released on 15 June 1979 on Tony Wilson's Factory Records.",
+		image_url: 'http://laughingsquid.com/wp-content/uploads/2015/02/unknownpleasures.jpg'
+	}, {
+		title: 'Unknown Pleasures',
+		author: 'Joy Division',
+		quantity: 15,
+		type: 'rock',
+		price: 25,
+		description: "Unknown Pleasures is the debut studio album by the English rock band Joy Division. It followed an abandoned session for RCA Records, and was eventually recorded and mixed over three weekends at Strawberry Studios, Stockport in April 1979 with record producer Martin Hannett. The album was released on 15 June 1979 on Tony Wilson's Factory Records.",
+		image_url: 'http://laughingsquid.com/wp-content/uploads/2015/02/unknownpleasures.jpg'
+	}, {
+		title: 'Dig That Groove Baby',
+		author: 'Toy Dolls',
+		quantity: 5,
+		type: 'rock',
+		price: 15,
+		description: "Dig That Groove Baby is the first full-length album by the Punk band Toy Dolls, released in 1983. It is considered by many fans to be the best work by the band and contains future live staples such as 'Nellie the Elephant' and 'Firey Jack'.",
+		image_url: 'https://upload.wikimedia.org/wikipedia/en/1/15/Dig_that_groove_baby.jpg'
 	}];
 
 	var creatingInventory = inventories.map(function(inventoryObj) {

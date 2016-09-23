@@ -22,22 +22,29 @@ const products = React.createClass({
 		this.serverRequest.abort();
 	},
 
+	addItem: function(id) {
+		this.serverRequest = $.post(window.location.origin + '/api/item/add/' + id, function (result) {
+			if(result) this.setState({items: result});
+		}.bind(this));
+	},
+
 	render: function() {
 		let indents = [];
 
 		this.state.indents.forEach(item => {
 			let pathId = '/products/' + item.id;
 			indents.push(
-				<div className='products' key={item.title}>
+				<div className='product' key={item.id}>
 					<Link to={pathId}>
 						<h3>{item.title} ${item.price}</h3>
 						<img src={item.image_url}></img>
 					</Link>
+					<input type="submit" value="add to cart" onClick={() => this.addItem(item.id)}></input>
 				</div>)
 		});
 
 		return (
-			<div className="productsWrapper">
+			<div className="products">
 				{indents}
 			</div>
 		)
