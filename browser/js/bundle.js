@@ -27258,7 +27258,11 @@
 				this.state.user ? _react2.default.createElement(
 					'div',
 					{ className: 'logout' },
-					_react2.default.createElement('input', { type: 'submit', onClick: this.handleSubmit, value: 'logout' })
+					_react2.default.createElement(
+						_reactRouter.Link,
+						{ to: '/', onClick: this.handleSubmit },
+						'logout'
+					)
 				) : _react2.default.createElement(
 					'div',
 					{ className: 'signin' },
@@ -46393,14 +46397,23 @@
 					_react2.default.createElement(
 						_reactRouter.Link,
 						{ to: pathId },
+						_react2.default.createElement('img', { src: item.image_url }),
 						_react2.default.createElement(
-							'h3',
-							null,
-							item.title,
-							' $',
-							item.price
-						),
-						_react2.default.createElement('img', { src: item.image_url })
+							'div',
+							{ className: 'description' },
+							_react2.default.createElement(
+								'h3',
+								null,
+								item.title
+							),
+							_react2.default.createElement('br', null),
+							_react2.default.createElement(
+								'h3',
+								null,
+								'$',
+								item.price
+							)
+						)
 					),
 					_react2.default.createElement('input', { type: 'submit', value: 'add to cart', onClick: function onClick() {
 							return _this.addItem(item.id);
@@ -46469,7 +46482,7 @@
 					'h3',
 					null,
 					this.state.indents.title,
-					' $',
+					' | $',
 					this.state.indents.price
 				),
 				_react2.default.createElement('img', { src: this.state.indents.image_url }),
@@ -46664,44 +46677,28 @@
 					'div',
 					{ className: 'nav' },
 					_react2.default.createElement(
-						'button',
-						null,
-						_react2.default.createElement(
-							_reactRouter.Link,
-							{ to: '/cart' },
-							'Cart'
-						)
+						_reactRouter.Link,
+						{ to: '/cart' },
+						'Cart'
 					),
 					_react2.default.createElement(
-						'button',
-						null,
-						_react2.default.createElement(
-							_reactRouter.Link,
-							{ to: '/products' },
-							'Products'
-						)
+						_reactRouter.Link,
+						{ to: '/products' },
+						'Products'
 					),
 					_react2.default.createElement(
-						'button',
-						null,
-						_react2.default.createElement(
-							_reactRouter.Link,
-							{ to: '/profile' },
-							'Profile'
-						)
+						_reactRouter.Link,
+						{ to: '/profile' },
+						'Profile'
 					)
 				),
 				_react2.default.createElement(
 					'div',
 					{ className: 'signin' },
 					_react2.default.createElement(
-						'button',
-						null,
-						_react2.default.createElement(
-							_reactRouter.Link,
-							{ to: '/login' },
-							'Login'
-						)
+						_reactRouter.Link,
+						{ to: '/login' },
+						'Login'
 					)
 				),
 				_react2.default.createElement(

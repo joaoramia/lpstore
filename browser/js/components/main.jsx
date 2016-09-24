@@ -39,7 +39,7 @@ const main = React.createClass({
 					<Link to='/products'>Products</Link>
 					<Link to='/profile'>Profile</Link>
 				</div>
-				{ this.state.user ? <div className="logout"><input type="submit" onClick={this.handleSubmit} value="logout"></input></div> : <div className="signin"><Link to='/login'>Login</Link><Link to='/signup'>Sign up</Link></div> }
+				{ this.state.user ? <div className="logout"><Link to='/' onClick={this.handleSubmit}>logout</Link></div> : <div className="signin"><Link to='/login'>Login</Link><Link to='/signup'>Sign up</Link></div> }
 				<h5 className="welcome">{this.state.user.name}</h5>
 				{this.props.children}
 			</div>

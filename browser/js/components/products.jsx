@@ -36,8 +36,8 @@ const products = React.createClass({
 			indents.push(
 				<div className='product' key={item.id}>
 					<Link to={pathId}>
-						<h3>{item.title} ${item.price}</h3>
 						<img src={item.image_url}></img>
+						<div className='description'><h3>{item.title}</h3><br /><h3>${item.price}</h3></div>
 					</Link>
 					<input type="submit" value="add to cart" onClick={() => this.addItem(item.id)}></input>
 				</div>)

@@ -55,12 +55,12 @@ const signup = React.createClass({
 		return (
 			<div id="signup">
 				<div className="nav">
-					<button><Link to='/cart'>Cart</Link></button>
-					<button><Link to='/products'>Products</Link></button>
-					<button><Link to='/profile'>Profile</Link></button>
+					<Link to='/cart'>Cart</Link>
+					<Link to='/products'>Products</Link>
+					<Link to='/profile'>Profile</Link>
 				</div>
 				<div className="signin">
-					<button><Link to='/login'>Login</Link></button>
+					<Link to='/login'>Login</Link>
 				</div>
 				<form onSubmit={this.handleSubmit}>
 					<div className="form-group">
