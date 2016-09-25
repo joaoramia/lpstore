@@ -67,15 +67,16 @@ const login = React.createClass({
 					<div className="form-group">
 						<label htmlFor="email">email *</label>
 						<input className="form-control" name="email" ref="email" required type="text" />
-					</div>
-					<div className="form-group">
 						<label htmlFor="password">password *</label>
 						<input className="form-control" name="password" ref="password" required type="text" />
+						<br />
+						<a onClick={this.handleSubmit} className="btn btn-block btn-social btn-github" type="submit"><span className="fa"></span>Sign in</a>
 					</div>
-					<a onClick={this.handleSubmit} className="btn btn-block btn-social btn-github" type="submit"><span className="fa"></span>Sign in</a>
 				</form>
-				<a onClick={this.handleGoogleLogin} className="btn btn-block btn-social btn-google" type="submit"><span className="fa fa-google"></span>Sign in with Google</a>
-				<a onClick={this.handleFacebookLogin} className="btn btn-block btn-social btn-facebook" type="submit"><span className="fa fa-facebook"></span>Sign in with Facebook</a>
+				<div className='social-buttons'>
+					<a onClick={this.handleGoogleLogin} className="btn btn-block btn-social btn-google" type="submit"><span className="fa fa-google"></span>Sign in with Google</a>
+					<a onClick={this.handleFacebookLogin} className="btn btn-block btn-social btn-facebook" type="submit"><span className="fa fa-facebook"></span>Sign in with Facebook</a>
+				</div>
 			</div>
 			)
 	}

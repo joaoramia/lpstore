@@ -27,11 +27,15 @@ const product = React.createClass({
 
 	render: function() {
 		return (
-			<div className='item'>
-				<h3>{this.state.indents.title} | ${this.state.indents.price}</h3>
-				<img src={this.state.indents.image_url} ></img>
-				<p>{this.state.indents.description}</p>
-				<input type="submit" value="Add to cart" onClick={this.addItem}></input>
+			<div className='single-product'>
+				<div className='item'>
+					<h3>{this.state.indents.title} | ${this.state.indents.price}</h3>
+					<img src={this.state.indents.image_url} ></img>
+					<input type="submit" value="Add to cart" onClick={this.addItem}></input>
+				</div>
+				<div className='product-description'>
+					<p>{this.state.indents.description}</p>
+				</div>
 			</div>
 		)
 	}
