@@ -11,7 +11,7 @@ module.exports = router;
 var facebookCredentials = {
     clientID: '252171888512524',
     clientSecret: '27e57eb811ef58518746a5d5f2050f78',
-    callbackURL: 'http://54.173.229.200:3030/auth/facebook/callback',
+    callbackURL: 'http://vinylstore.herokuapp.com/auth/facebook/callback',
     profileFields: ["id", "emails", "displayName"]
 };
 
