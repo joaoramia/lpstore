@@ -7,7 +7,7 @@
     "test": "tests"
   },
   "scripts": {
-    "start": "nodemon ./server/index.js ./seed.js",
+    "start": "nodemon ./server/index.js",
     "test": "./node_modules/mocha/bin/mocha ./tests/ --recursive",
     "test:watch": "npm run test -- --watch"
   },
