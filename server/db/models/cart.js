@@ -12,6 +12,10 @@ var cart = db.define('cart', {
         type: Sequelize.ENUM,
         values: ['complete', 'cancelled', 'pending'],
         defaultValue: 'pending'
+    },
+    items: {
+    	type: Sequelize.ARRAY(Sequelize.JSON),
+    	allowNull: true
     }
 });
 

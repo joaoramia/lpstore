@@ -17,7 +17,7 @@ const product = React.createClass({
 	},
 
 	componentWillUnmount: function () {
-		this.serverRequest.abort();
+		// this.serverRequest.abort();
 	},
 
 	addItem: function() {

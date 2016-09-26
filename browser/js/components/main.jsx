@@ -37,7 +37,6 @@ const main = React.createClass({
 				<div className="nav">
 					<Link to='/cart'>Cart</Link>
 					<Link to='/products'>Products</Link>
-					<Link to='/profile'>Profile</Link>
 				</div>
 				{ this.state.user ? <div className="logout"><Link to='/' onClick={this.handleSubmit}>logout</Link></div> : <div className="signin"><Link to='/login'>Login</Link><Link to='/signup'>Sign up</Link></div> }
 				<h5 className="welcome">{this.state.user.name}</h5>

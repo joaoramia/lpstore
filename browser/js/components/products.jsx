@@ -10,7 +10,7 @@ const products = React.createClass({
 		};
 	},
 
-	componentDidMount: function() {
+	componentWillMount: function() {
 		this.serverRequest = $.get(window.location.origin + '/api/inventory', function (result) {
 			this.setState({
 				indents: result
@@ -32,15 +32,17 @@ const products = React.createClass({
 		let indents = [];
 
 		this.state.indents.forEach(item => {
-			let pathId = '/products/' + item.id;
-			indents.push(
-				<div className='product' key={item.id}>
-					<Link to={pathId}>
-						<img src={item.image_url}></img>
-						<div className='description'><p>{item.title}</p><p>${item.price}</p></div>
-					</Link>
-					<input type="submit" value="add to cart" onClick={() => this.addItem(item.id)}></input>
-				</div>)
+			if (item.quantity >= 1){
+				let pathId = '/products/' + item.id;
+				indents.push(
+					<div className='product' key={item.id}>
+						<Link to={pathId}>
+							<img src={item.image_url}></img>
+							<div className='description'><p>{item.title}</p><p>${item.price}</p></div>
+						</Link>
+						<input type="submit" value="add to cart" onClick={() => this.addItem(item.id)}></input>
+					</div>)
+			}
 		});
 
 		return (

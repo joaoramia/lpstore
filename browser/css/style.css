@@ -92,6 +92,43 @@ html, body {
 	color: rgba(245, 241, 222, 1);
 }
 
+@media handheld, screen and (max-width: 750px){
+	.nav a {
+		font-size: 15px;
+		margin-left: 10px;
+	}
+
+	.nav {
+		height: 15%;
+	}
+
+	.logout {
+		height: 15%;
+	}
+
+	.signin {
+		height: 15%;
+	}
+}
+
+@media handheld, screen and (max-width: 500px){
+	.nav a {
+		font-size: 15px;
+		margin-left: 10px;
+	}
+
+	.nav {
+		height: 10%;
+	}
+
+	.logout {
+		height: 10%;
+	}
+
+	.signin {
+		height: 10%;
+	}
+}
 
 /* /products page styles */
 
@@ -178,16 +215,50 @@ html, body {
 	background: rgba(140, 69, 5, 1);
 }
 
-@media(max-width: 750px){
+.total-price {
+	width: 100%;
+	float: left;
+	padding-top: 5%;
+	display: table;
+	vertical-align: middle;
+	height: 5%;
+}
+
+.total-price h1 {
+	height: 100%;
+	padding-left: 5%;
+	display: inline;
+	vertical-align: middle;
+	color: rgba(245, 241, 222, 1);
+}
+
+.total-price button {
+	height: 40px;
+	width: 30%;
+	margin-right: 5%;
+	border: none;
+	background: rgba(120, 49, 5, 1);
+	float: right;
+    color: white;
+    text-align: center;
+    text-decoration: none !important;
+	display: table-cell;
+	vertical-align: middle;
+}
+
+@media handheld, screen and (max-width: 750px){
 	.product {
 		max-width: 43%;
 	}
 	.products {
 		padding-top: 20%;
 	}
+	.total-price h1 {
+		font-size: 20px;
+	}
 }
 
-@media(max-width: 500px){
+@media handheld, screen and (max-width: 500px){
 	.product {
 		max-width: 90%;
 	}
@@ -200,26 +271,31 @@ html, body {
 	margin-left: 2%;
 	max-width: 90%;
 	color: rgba(245, 241, 222, 1);
+	text-align: center;
 }
 
 .item {
 	float: left;
+	max-width: 40%;
 }
 
 .item img {
-	max-width: 50%;
+	max-width: 90%;
 }
 
 .product-description {
-	height: 100%;
+	margin-top: 5%;
+	/*height: 100%;*/
 	float: right;
-	max-width: 70%;
+	/*float-left;*/
+	margin-right: 0;
+	max-width: 60%;
 	color: rgba(245, 241, 222, 1);
 	background: rgba(0,0,0,0.5);
 }
 
 .item input{
-	width: 50%;
+	width: 90%;
 	background: rgba(140, 69, 5, 0.7);
     border: none;
     color: white;
@@ -229,6 +305,24 @@ html, body {
     display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
+}
+
+@media handheld, screen and (max-width: 750px){
+	.item {
+		float: left;
+		max-width: 100%;
+	}
+	.product-description {
+		margin-top: 5%;
+		float: left;
+		margin-right: 0;
+		max-width: 100%;
+	}
+}
+
+/* /cart page styles */
+.inStock {
+	color: rgba(245, 241, 222, 1);
 }
 
 /* /login page styles */
@@ -248,13 +342,18 @@ html, body {
 	max-width: 90%;
 }
 
-@media(max-width: 750px){
+.failed-login {
+	/*padding-top: 14%;*/
+	color: red;
+}
+
+@media handheld, screen and (max-width: 750px){
 	.form-group {
-		padding-top: 25%;
+		padding-top: 20%;
 	}
 }
 
-@media(max-width: 500px){
+@media handheld, screen and (max-width: 500px){
 	.form-group {
 		padding-top: 40%;
 	}

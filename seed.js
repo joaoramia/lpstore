@@ -82,20 +82,20 @@ var seedInventory = function() {
 		description: 'Houses of the Holy is the fifth studio album by English rock band Led Zeppelin, released on 28 March 1973 by Atlantic Records.',
 		image_url: 'http://www.feelnumb.com/wp-content/uploads/2009/10/Led-Zeppelin-Houses-of-the-Holy-album-cover-location-giants-causeway.jpg'
 	}, {
-		title: 'Unknown Pleasures',
-		author: 'Joy Division',
+		title: 'Surrealistic Pillow',
+		author: 'Jefferson Airplane',
 		quantity: 15,
 		type: 'rock',
 		price: 25,
 		description: "Unknown Pleasures is the debut studio album by the English rock band Joy Division. It followed an abandoned session for RCA Records, and was eventually recorded and mixed over three weekends at Strawberry Studios, Stockport in April 1979 with record producer Martin Hannett. The album was released on 15 June 1979 on Tony Wilson's Factory Records.",
-		image_url: 'http://laughingsquid.com/wp-content/uploads/2015/02/unknownpleasures.jpg'
+		image_url: 'http://vignette1.wikia.nocookie.net/lyricwiki/images/2/21/Jefferson_Airplane_-_Surrealistic_Pillow.jpg/revision/latest?cb=20140507003355'
 	}, {
 		title: 'Unknown Pleasures',
 		author: 'Joy Division',
 		quantity: 15,
 		type: 'rock',
 		price: 25,
-		description: "Unknown Pleasures is the debut studio album by the English rock band Joy Division. It followed an abandoned session for RCA Records, and was eventually recorded and mixed over three weekends at Strawberry Studios, Stockport in April 1979 with record producer Martin Hannett. The album was released on 15 June 1979 on Tony Wilson's Factory Records.",
+		description: "Surrealistic Pillow is the second album by American rock band Jefferson Airplane, released on February 1, 1967, by RCA Victor. It is the first album by the band with vocalist Grace Slick and drummer Spencer Dryden.",
 		image_url: 'http://laughingsquid.com/wp-content/uploads/2015/02/unknownpleasures.jpg'
 	}, {
 		title: 'Dig That Groove Baby',

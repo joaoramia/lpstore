@@ -5,7 +5,6 @@ import Link from 'react-router/lib/Link';
 import {Router, Route, hashHistory, browserHistory} from 'react-router';
 import app from './components/app';
 import main from './components/main';
-import container from './components/container';
 import products from './components/products';
 import product from './components/product';
 import cart from './components/cart';

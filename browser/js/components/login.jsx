@@ -6,6 +6,12 @@ import main from './main';
 
 const login = React.createClass({
 
+	getInitialState: function() {
+		return {
+			correctLogin: true
+		};
+	},
+
 	contextTypes: {
     	router: React.PropTypes.object.isRequired
 	},
@@ -22,7 +28,12 @@ const login = React.createClass({
 		}
 		let login = this;
 		this.serverRequest = $.post(window.location.origin + '/login', formData, function(response){
-			if(response) login.context.router.push('/'); //this will redirect to main page after successful login
+			if(response) {
+				login.context.router.push('/'); //this will redirect to main page after successful login
+			}
+			else {
+				login.setState({correctLogin: false});
+			}
 		});
 	},
 
@@ -65,9 +76,9 @@ const login = React.createClass({
 				</div>
 				<form onSubmit={this.handleSubmit}>
 					<div className="form-group">
-						<label htmlFor="email">email *</label>
+						<label htmlFor="email">email * {!this.state.correctLogin ? <span className='failed-login'>please try again</span> : null}</label>
 						<input className="form-control" name="email" ref="email" required type="text" />
-						<label htmlFor="password">password *</label>
+						<label htmlFor="password">password * {!this.state.correctLogin ? <span className='failed-login'>please try again</span> : null}</label>
 						<input className="form-control" name="password" ref="password" required type="text" />
 						<br />
 						<a onClick={this.handleSubmit} className="btn btn-block btn-social btn-github" type="submit"><span className="fa"></span>Sign in</a>

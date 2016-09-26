@@ -30,6 +30,7 @@ router.post('/add/:id', function (req, res, next) {
 		//if it's already in the list, we check if the inventory quantity is enough, if so, we add it
 		else if (founditem.quantity > req.session.items[founditem.id].quantity){
 			req.session.items[founditem.id].quantity++;
+			req.session.items[founditem.id].inStock = founditem.quantity; //in case inventory has changed
 		}
 		//if there is not enough items, we send a message 'not enough items in stock'
 		else {

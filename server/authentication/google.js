@@ -6,6 +6,19 @@ var GoogleStrategy = require('passport-google-oauth20').Strategy;
 var db = require('../db');
 var user = db.model('user');
 
+//to get local ip for the callbackURL (currently not in use):
+var os = require('os');
+var interfaces = os.networkInterfaces();
+var addresses = [];
+for (var k in interfaces) {
+    for (var k2 in interfaces[k]) {
+        var address = interfaces[k][k2];
+        if (address.family === 'IPv4' && !address.internal) {
+            addresses.push(address.address);
+        }
+    }
+}
+
 module.exports = router;
 
 var googleCredentials = {
