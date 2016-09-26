@@ -24,7 +24,7 @@ module.exports = router;
 var googleCredentials = {
     clientID: '824703239137-t07hihd911u5bvkai3v4eg6i1oafu1vc.apps.googleusercontent.com',
     clientSecret: '4xD6FZIFT_uXrAjPzvb3AiPx',
-    callbackURL: 'http://localhost:3030/auth/google/callback' //to be updated
+    callbackURL: 'http://54.173.229.200:3030/auth/google/callback' //to be updated
 };
 
 var verifyCallback = function (accessToken, refreshToken, profile, done) {
