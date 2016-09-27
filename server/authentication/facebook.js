@@ -29,7 +29,7 @@ var verifyCallback = function (accessToken, refreshToken, profile, done) {
                 return user.create({
                     facebook_id: profile.id,
                     name: profile.displayName,
-                    email: profile.emails ? profile.emails[0].value : [profile.username , '@no-email.com'].join('@')
+                    email: profile.emails ? profile.emails[0].value : profile.username.displayName + '@no-email.com'
                 });
             }
         })
