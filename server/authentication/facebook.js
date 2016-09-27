@@ -26,10 +26,12 @@ var verifyCallback = function (accessToken, refreshToken, profile, done) {
             if (founduser) {
                 return founduser;
             } else {
+                console.log("profile.emails: ", profile.emails);
+                console.log("profile.username.displayName: ", profile.displayName);
                 return user.create({
                     facebook_id: profile.id,
                     name: profile.displayName,
-                    email: profile.emails ? profile.emails[0].value : profile.username.displayName + '@no-email.com'
+                    email: profile.emails ? profile.emails[0].value : profile.displayName + '@no-email.com'
                 });
             }
         })
