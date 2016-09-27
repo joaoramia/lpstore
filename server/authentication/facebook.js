@@ -32,7 +32,7 @@ var verifyCallback = function (accessToken, refreshToken, profile, done) {
                 return user.create({
                     facebook_id: profile.id,
                     name: profile.displayName,
-                    email: !profile.emails ?  profile.displayName.join('.') + '@no-email.com' : profile.emails[0].value
+                    email: !profile.emails ?  profile.displayName.replace(' ', '.') + '@no-email.com' : profile.emails[0].value
                 });
             }
         })
