@@ -27543,6 +27543,8 @@
 					this.setState({ items: result, price: currentPrice });
 				}
 			}.bind(this));
+			$('.glyphicon').animate({ opacity: '0.0' }, "slow");
+			$('.glyphicon').animate({ opacity: '1.0' }, "slow");
 		},
 
 		removeItem: function removeItem(id) {
@@ -27553,6 +27555,8 @@
 				});
 				this.setState({ items: result, price: currentPrice });
 			}.bind(this));
+			$('.glyphicon').animate({ opacity: '0.0' }, "slow");
+			$('.glyphicon').animate({ opacity: '1.0' }, "slow");
 		},
 
 		render: function render() {
