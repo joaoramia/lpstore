@@ -91,9 +91,11 @@ html, body {
 .welcome {
 	display: block;
 	padding-top: 6%;
-	margin-right: 1%;
+	margin-right: 2%;
 	float: right;
 	color: rgba(245, 241, 222, 1);
+	z-index: +1;
+	position:relative;
 	font-family: 'Dosis', sans-serif;
 }
 
@@ -114,6 +116,11 @@ html, body {
 	.signin {
 		height: 15%;
 	}
+
+	.welcome {
+		padding-top: 8%;
+		margin-right: 4%;
+	}
 }
 
 @media handheld, screen and (max-width: 500px){
@@ -133,6 +140,11 @@ html, body {
 
 	.signin {
 		height: 10%;
+	}
+
+	.welcome {
+		padding-top: 9%;
+		margin-right: 5%;
 	}
 }
 
