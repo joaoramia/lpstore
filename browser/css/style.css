@@ -103,22 +103,34 @@ html, body {
 	.nav a {
 		font-size: 15px;
 		margin-left: 60px;
+		padding-top: 15%;
 	}
 
 	.nav {
-		height: 15%;
+		/*height: 15%;*/
+		height: 20%;
 	}
 
 	.logout {
-		height: 15%;
+		/*height: 15%;*/
+		height: 20%;
+	}
+
+	.logout a {
+		padding-top: 15%;
 	}
 
 	.signin {
-		height: 15%;
+		/*height: 15%;*/
+		height: 20%;
+	}
+
+	.signin a {
+		padding-top: 15%;
 	}
 
 	.welcome {
-		padding-top: 8%;
+		padding-top: 13%;
 		margin-right: 4%;
 	}
 }
@@ -128,22 +140,34 @@ html, body {
 		font-size: 15px;
 		margin-left: 10px;
 		margin-left: 50px;
+		padding-top: 25%;
 	}
 
 	.nav {
-		height: 10%;
+		/*height: 10%;*/
+		height: 20%;
 	}
 
 	.logout {
-		height: 10%;
+		/*height: 10%;*/
+		height: 20%;
+	}
+
+	.logout a {
+		padding-top: 25%;
 	}
 
 	.signin {
-		height: 10%;
+		/*height: 10%;*/
+		height: 20%;
+	}
+
+	.signin a {
+		padding-top: 25%;
 	}
 
 	.welcome {
-		padding-top: 9%;
+		padding-top: 23%;
 		margin-right: 5%;
 	}
 }

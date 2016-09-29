@@ -27275,8 +27275,7 @@
 				_react2.default.createElement(
 					'h5',
 					{ className: 'welcome' },
-					'Welcome ',
-					this.state.user.name
+					!this.state.user.name ? null : 'Welcome ' + this.state.user.name
 				),
 				this.props.children
 			);

@@ -40,7 +40,7 @@ const main = React.createClass({
 					<Link to='/cart'><span className="glyphicon glyphicon-shopping-cart"></span></Link>
 				</div>
 				{ this.state.user ? <div className="logout"><Link to='/' onClick={this.handleSubmit}>logout</Link></div> : <div className="signin"><Link to='/login'>Login</Link><Link to='/signup'>Sign up</Link></div> }
-				<h5 className="welcome">Welcome {this.state.user.name}</h5>
+				<h5 className="welcome">{!this.state.user.name ? null : 'Welcome ' + this.state.user.name}</h5>
 				{this.props.children}
 			</div>
 		)
