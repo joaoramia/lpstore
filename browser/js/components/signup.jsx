@@ -69,7 +69,7 @@ const signup = React.createClass({
 						<label htmlFor="email">email *</label>
 						<input className="form-control" name="email" ref="email" required type="text" />
 						<label htmlFor="password">password *</label>
-						<input className="form-control" name="password" ref="password" required type="text" />
+						<input className="form-control" name="password" ref="password" required type="password" />
 						<br />
 						<a onClick={this.handleSubmit} className="btn btn-block btn-social btn-github" type="submit"><span className="fa"></span>Sign up</a>
 					</div>

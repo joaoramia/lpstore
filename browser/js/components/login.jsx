@@ -79,7 +79,7 @@ const login = React.createClass({
 						<label htmlFor="email">email * {!this.state.correctLogin ? <span className='failed-login'>please try again</span> : null}</label>
 						<input className="form-control" name="email" ref="email" required type="text" />
 						<label htmlFor="password">password * {!this.state.correctLogin ? <span className='failed-login'>please try again</span> : null}</label>
-						<input className="form-control" name="password" ref="password" required type="text" />
+						<input className="form-control" name="password" ref="password" required type="password" />
 						<br />
 						<a onClick={this.handleSubmit} className="btn btn-block btn-social btn-github" type="submit"><span className="fa"></span>Sign in</a>
 					</div>

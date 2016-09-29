@@ -27426,7 +27426,7 @@
 								'please try again'
 							) : null
 						),
-						_react2.default.createElement('input', { className: 'form-control', name: 'password', ref: 'password', required: true, type: 'text' }),
+						_react2.default.createElement('input', { className: 'form-control', name: 'password', ref: 'password', required: true, type: 'password' }),
 						_react2.default.createElement('br', null),
 						_react2.default.createElement(
 							'a',
@@ -27915,7 +27915,7 @@
 							{ htmlFor: 'password' },
 							'password *'
 						),
-						_react2.default.createElement('input', { className: 'form-control', name: 'password', ref: 'password', required: true, type: 'text' }),
+						_react2.default.createElement('input', { className: 'form-control', name: 'password', ref: 'password', required: true, type: 'password' }),
 						_react2.default.createElement('br', null),
 						_react2.default.createElement(
 							'a',

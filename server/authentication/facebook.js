@@ -26,9 +26,6 @@ var verifyCallback = function (accessToken, refreshToken, profile, done) {
             if (founduser) {
                 return founduser;
             } else {
-                console.log("profile.emails: ", profile.emails);
-                console.log("profile.username.displayName: ", profile.displayName);
-                // console.log("profile.displayName.join('.') + '@no-email.com': ", profile.displayName.join('.') + '@no-email.com')
                 return user.create({
                     facebook_id: profile.id,
                     name: profile.displayName,
