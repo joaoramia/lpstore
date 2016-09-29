@@ -112,7 +112,6 @@ html, body {
 	}
 
 	.logout {
-		/*height: 15%;*/
 		height: 20%;
 	}
 
@@ -121,7 +120,6 @@ html, body {
 	}
 
 	.signin {
-		/*height: 15%;*/
 		height: 20%;
 	}
 
@@ -132,6 +130,24 @@ html, body {
 	.welcome {
 		padding-top: 13%;
 		margin-right: 4%;
+	}
+
+	@media handheld, screen and (max-height: 420px){
+		.nav a {
+			padding-top: 9%;
+		}
+		
+		.logout a {
+			padding-top: 9%;
+		}
+
+		.signin a {
+			padding-top: 9%;
+		}
+
+		.welcome {
+			padding-top: 10%;
+		}
 	}
 }
 
