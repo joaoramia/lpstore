@@ -25,11 +25,11 @@ html, body {
 	height: 20%;
 	float: left;
 	position: fixed;
-	background: rgba(0, 0, 0, 0.7);
+	background: rgba(0, 0, 0, 0.8);
 }
 
 .nav a {
-	margin-left: 40px;
+	margin-left: 50px;
 	padding-top: 7.5%;
 	display: inline-block;
 	font-size: 20px;
@@ -47,7 +47,7 @@ html, body {
 	height: 20%;
 	position: fixed;
 	right: 0;
-	background: rgba(0, 0, 0, 0.7);
+	background: rgba(0, 0, 0, 0.8);
 }
 
 .signin a {
@@ -71,7 +71,7 @@ html, body {
 	right: 0;
 	position: fixed;
 	float: right;
-	background: rgba(0, 0, 0, 0.7);
+	background: rgba(0, 0, 0, 0.8);
 }
 
 .logout a {
@@ -99,8 +99,8 @@ html, body {
 
 @media handheld, screen and (max-width: 750px){
 	.nav a {
-		/*font-size: 15px;*/
-		/*margin-left: 10px;*/
+		font-size: 15px;
+		margin-left: 60px;
 	}
 
 	.nav {
@@ -118,8 +118,9 @@ html, body {
 
 @media handheld, screen and (max-width: 500px){
 	.nav a {
-		/*font-size: 15px;*/
-		/*margin-left: 10px;*/
+		font-size: 15px;
+		margin-left: 10px;
+		margin-left: 50px;
 	}
 
 	.nav {
@@ -374,12 +375,4 @@ html, body {
 	.form-group {
 		padding-top: 40%;
 	}
-}
-
-.blink {
-	animation: blinker 2s linear;
-}
-
-@keyframes blinker {  
-  50% { opacity: 0.0; }
 }

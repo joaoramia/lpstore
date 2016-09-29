@@ -31,7 +31,8 @@ const cart = React.createClass({
 			description: 'Vinyl online store',
 			zipCode: true,
 			amount: this.state.price * 100,
-			shippingAddress: false
+			shippingAddress: true,
+			billingAddress: true
 		});
 		this.componentWillMount();
 		this.context.router.push('/');

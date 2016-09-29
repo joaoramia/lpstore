@@ -27241,7 +27241,7 @@
 					{ className: 'nav' },
 					_react2.default.createElement(
 						_reactRouter.Link,
-						{ to: '/products', className: 'tohide' },
+						{ to: '/products' },
 						'Products'
 					),
 					_react2.default.createElement(
@@ -27508,7 +27508,8 @@
 				description: 'Vinyl online store',
 				zipCode: true,
 				amount: this.state.price * 100,
-				shippingAddress: false
+				shippingAddress: true,
+				billingAddress: true
 			});
 			this.componentWillMount();
 			this.context.router.push('/');
@@ -27663,11 +27664,8 @@
 				if (result) this.setState({ items: result });
 			}.bind(this));
 
-			$('.tohide').animate({ opacity: '0.0' }, 'fast');
-			$('.glyphicon').animate({ opacity: '0.0', 'font-size': '35px' }, "slow");
-			$('.glyphicon').animate({ opacity: '1.0', 'font-size': '20px' }, "slow", function () {
-				$('.tohide').animate({ opacity: '1.0' }, 'slow');
-			});
+			$('.glyphicon').animate({ opacity: '0.0' }, "slow");
+			$('.glyphicon').animate({ opacity: '1.0' }, "slow");
 		},
 
 		render: function render() {
@@ -27759,11 +27757,8 @@
 
 		addItem: function addItem() {
 			this.serverRequest = $.post(window.location.origin + '/api/item/add/' + this.props.params.id, function (result) {}.bind(this));
-			$('.tohide').animate({ opacity: '0.0' }, 'fast');
-			$('.glyphicon').animate({ opacity: '0.0', 'font-size': '35px' }, "slow");
-			$('.glyphicon').animate({ opacity: '1.0', 'font-size': '20px' }, "slow", function () {
-				$('.tohide').animate({ opacity: '1.0' }, 'slow');
-			});
+			$('.glyphicon').animate({ opacity: '0.0' }, "slow");
+			$('.glyphicon').animate({ opacity: '1.0' }, "slow");
 		},
 
 		render: function render() {
