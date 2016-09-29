@@ -55,9 +55,8 @@ const signup = React.createClass({
 		return (
 			<div id="signup">
 				<div className="nav">
-					<Link to='/cart'>Cart</Link>
 					<Link to='/products'>Products</Link>
-					<Link to='/profile'>Profile</Link>
+					<Link to='/cart'><span className="glyphicon glyphicon-shopping-cart"></span></Link>
 				</div>
 				<div className="signin">
 					<Link to='/login'>Login</Link>

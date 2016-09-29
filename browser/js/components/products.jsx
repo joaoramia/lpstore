@@ -26,6 +26,12 @@ const products = React.createClass({
 		this.serverRequest = $.post(window.location.origin + '/api/item/add/' + id, function (result) {
 			if(result) this.setState({items: result});
 		}.bind(this));
+
+		$('.tohide').animate({opacity: '0.0'}, 'fast');
+		$('.glyphicon').animate({opacity: '0.0', 'font-size': '35px'}, "slow");
+		$('.glyphicon').animate({opacity: '1.0', 'font-size': '20px'}, "slow", ()=>{
+			$('.tohide').animate({opacity: '1.0'}, 'slow');
+		});
 	},
 
 	render: function() {

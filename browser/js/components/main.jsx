@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 import login from './login';
+import cart from './cart';
 
 const main = React.createClass({
 
@@ -35,11 +36,11 @@ const main = React.createClass({
 		return (
 			<div className="main">
 				<div className="nav">
-					<Link to='/cart'>Cart</Link>
-					<Link to='/products'>Products</Link>
+					<Link to='/products' className='tohide'>Products</Link>
+					<Link to='/cart'><span className="glyphicon glyphicon-shopping-cart"></span></Link>
 				</div>
 				{ this.state.user ? <div className="logout"><Link to='/' onClick={this.handleSubmit}>logout</Link></div> : <div className="signin"><Link to='/login'>Login</Link><Link to='/signup'>Sign up</Link></div> }
-				<h5 className="welcome">{this.state.user.name}</h5>
+				<h5 className="welcome">Welcome {this.state.user.name}</h5>
 				{this.props.children}
 			</div>
 		)

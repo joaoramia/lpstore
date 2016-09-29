@@ -62,7 +62,7 @@ var seedInventory = function() {
 		author: 'The Animals',
 		quantity: 10,
 		type: 'rock',
-		price: 2,
+		price: 20,
 		description: 'Animalisms is the third British album by British group the Animals. It has a track listing generally similar to the American version, Animalization, that was released two months later.',
 		image_url: 'http://www.propermusic.com/cache/images/f/4/5/f45415730f867c9b833e9450f47e0f19.jpg'
 	}, {
@@ -87,7 +87,7 @@ var seedInventory = function() {
 		quantity: 15,
 		type: 'rock',
 		price: 25,
-		description: "Unknown Pleasures is the debut studio album by the English rock band Joy Division. It followed an abandoned session for RCA Records, and was eventually recorded and mixed over three weekends at Strawberry Studios, Stockport in April 1979 with record producer Martin Hannett. The album was released on 15 June 1979 on Tony Wilson's Factory Records.",
+		description: "Surrealistic Pillow is the second album by American rock band Jefferson Airplane, released on February 1, 1967, by RCA Victor. It is the first album by the band with vocalist Grace Slick and drummer Spencer Dryden.",
 		image_url: 'http://vignette1.wikia.nocookie.net/lyricwiki/images/2/21/Jefferson_Airplane_-_Surrealistic_Pillow.jpg/revision/latest?cb=20140507003355'
 	}, {
 		title: 'Unknown Pleasures',
@@ -95,7 +95,7 @@ var seedInventory = function() {
 		quantity: 15,
 		type: 'rock',
 		price: 25,
-		description: "Surrealistic Pillow is the second album by American rock band Jefferson Airplane, released on February 1, 1967, by RCA Victor. It is the first album by the band with vocalist Grace Slick and drummer Spencer Dryden.",
+		description: "Unknown Pleasures is the debut studio album by the English rock band Joy Division. It followed an abandoned session for RCA Records, and was eventually recorded and mixed over three weekends at Strawberry Studios, Stockport in April 1979 with record producer Martin Hannett. The album was released on 15 June 1979 on Tony Wilson's Factory Records.",
 		image_url: 'http://laughingsquid.com/wp-content/uploads/2015/02/unknownpleasures.jpg'
 	}, {
 		title: 'Dig That Groove Baby',

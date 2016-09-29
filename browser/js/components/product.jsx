@@ -17,12 +17,17 @@ const product = React.createClass({
 	},
 
 	componentWillUnmount: function () {
-		// this.serverRequest.abort();
+		this.serverRequest.abort();
 	},
 
 	addItem: function() {
 		this.serverRequest = $.post(window.location.origin + '/api/item/add/' + this.props.params.id, function (result) {
 		}.bind(this));
+		$('.tohide').animate({opacity: '0.0'}, 'fast');
+		$('.glyphicon').animate({opacity: '0.0', 'font-size': '35px'}, "slow");
+		$('.glyphicon').animate({opacity: '1.0', 'font-size': '20px'}, "slow", ()=>{
+			$('.tohide').animate({opacity: '1.0'}, 'slow');
+		});
 	},
 
 	render: function() {

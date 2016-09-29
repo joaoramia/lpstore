@@ -75,15 +75,15 @@
 
 	var _main2 = _interopRequireDefault(_main);
 
-	var _products = __webpack_require__(239);
+	var _products = __webpack_require__(240);
 
 	var _products2 = _interopRequireDefault(_products);
 
-	var _product = __webpack_require__(240);
+	var _product = __webpack_require__(241);
 
 	var _product2 = _interopRequireDefault(_product);
 
-	var _cart = __webpack_require__(241);
+	var _cart = __webpack_require__(239);
 
 	var _cart2 = _interopRequireDefault(_cart);
 
@@ -27195,6 +27195,10 @@
 
 	var _login2 = _interopRequireDefault(_login);
 
+	var _cart = __webpack_require__(239);
+
+	var _cart2 = _interopRequireDefault(_cart);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var main = _react2.default.createClass({
@@ -27237,13 +27241,13 @@
 					{ className: 'nav' },
 					_react2.default.createElement(
 						_reactRouter.Link,
-						{ to: '/cart' },
-						'Cart'
+						{ to: '/products', className: 'tohide' },
+						'Products'
 					),
 					_react2.default.createElement(
 						_reactRouter.Link,
-						{ to: '/products' },
-						'Products'
+						{ to: '/cart' },
+						_react2.default.createElement('span', { className: 'glyphicon glyphicon-shopping-cart' })
 					)
 				),
 				this.state.user ? _react2.default.createElement(
@@ -27271,6 +27275,7 @@
 				_react2.default.createElement(
 					'h5',
 					{ className: 'welcome' },
+					'Welcome ',
 					this.state.user.name
 				),
 				this.props.children
@@ -27376,18 +27381,13 @@
 					{ className: 'nav' },
 					_react2.default.createElement(
 						_reactRouter.Link,
-						{ to: '/cart' },
-						'Cart'
-					),
-					_react2.default.createElement(
-						_reactRouter.Link,
 						{ to: '/products' },
 						'Products'
 					),
 					_react2.default.createElement(
 						_reactRouter.Link,
-						{ to: '/profile' },
-						'Profile'
+						{ to: '/cart' },
+						_react2.default.createElement('span', { className: 'glyphicon glyphicon-shopping-cart' })
 					)
 				),
 				_react2.default.createElement(
@@ -27460,178 +27460,6 @@
 
 /***/ },
 /* 239 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(180);
-
-	var _product = __webpack_require__(240);
-
-	var _product2 = _interopRequireDefault(_product);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var products = _react2.default.createClass({
-		displayName: 'products',
-
-		getInitialState: function getInitialState() {
-			return {
-				indents: []
-			};
-		},
-
-		componentWillMount: function componentWillMount() {
-			this.serverRequest = $.get(window.location.origin + '/api/inventory', function (result) {
-				this.setState({
-					indents: result
-				});
-			}.bind(this));
-		},
-
-		componentWillUnmount: function componentWillUnmount() {
-			this.serverRequest.abort();
-		},
-
-		addItem: function addItem(id) {
-			this.serverRequest = $.post(window.location.origin + '/api/item/add/' + id, function (result) {
-				if (result) this.setState({ items: result });
-			}.bind(this));
-		},
-
-		render: function render() {
-			var _this = this;
-
-			var indents = [];
-
-			this.state.indents.forEach(function (item) {
-				if (item.quantity >= 1) {
-					var pathId = '/products/' + item.id;
-					indents.push(_react2.default.createElement(
-						'div',
-						{ className: 'product', key: item.id },
-						_react2.default.createElement(
-							_reactRouter.Link,
-							{ to: pathId },
-							_react2.default.createElement('img', { src: item.image_url }),
-							_react2.default.createElement(
-								'div',
-								{ className: 'description' },
-								_react2.default.createElement(
-									'p',
-									null,
-									item.title
-								),
-								_react2.default.createElement(
-									'p',
-									null,
-									'$',
-									item.price
-								)
-							)
-						),
-						_react2.default.createElement('input', { type: 'submit', value: 'add to cart', onClick: function onClick() {
-								return _this.addItem(item.id);
-							} })
-					));
-				}
-			});
-
-			return _react2.default.createElement(
-				'div',
-				{ className: 'products' },
-				indents
-			);
-		}
-	});
-
-	exports.default = products;
-
-/***/ },
-/* 240 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactRouter = __webpack_require__(180);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var product = _react2.default.createClass({
-		displayName: 'product',
-
-		getInitialState: function getInitialState() {
-			return {
-				indents: {}
-			};
-		},
-
-		componentDidMount: function componentDidMount() {
-			this.serverRequest = $.get(window.location.origin + '/api/inventory/' + this.props.params.id, function (result) {
-				this.setState({
-					indents: result
-				});
-			}.bind(this));
-		},
-
-		componentWillUnmount: function componentWillUnmount() {
-			// this.serverRequest.abort();
-		},
-
-		addItem: function addItem() {
-			this.serverRequest = $.post(window.location.origin + '/api/item/add/' + this.props.params.id, function (result) {}.bind(this));
-		},
-
-		render: function render() {
-			return _react2.default.createElement(
-				'div',
-				{ className: 'single-product' },
-				_react2.default.createElement(
-					'div',
-					{ className: 'item' },
-					_react2.default.createElement(
-						'h3',
-						null,
-						this.state.indents.title,
-						' | $',
-						this.state.indents.price
-					),
-					_react2.default.createElement('img', { src: this.state.indents.image_url }),
-					_react2.default.createElement('input', { type: 'submit', value: 'Add to cart', onClick: this.addItem })
-				),
-				_react2.default.createElement(
-					'div',
-					{ className: 'product-description' },
-					_react2.default.createElement(
-						'p',
-						null,
-						this.state.indents.description
-					)
-				)
-			);
-		}
-	});
-
-	exports.default = product;
-
-/***/ },
-/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27788,6 +27616,189 @@
 	exports.default = cart;
 
 /***/ },
+/* 240 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(180);
+
+	var _product = __webpack_require__(241);
+
+	var _product2 = _interopRequireDefault(_product);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var products = _react2.default.createClass({
+		displayName: 'products',
+
+		getInitialState: function getInitialState() {
+			return {
+				indents: []
+			};
+		},
+
+		componentWillMount: function componentWillMount() {
+			this.serverRequest = $.get(window.location.origin + '/api/inventory', function (result) {
+				this.setState({
+					indents: result
+				});
+			}.bind(this));
+		},
+
+		componentWillUnmount: function componentWillUnmount() {
+			this.serverRequest.abort();
+		},
+
+		addItem: function addItem(id) {
+			this.serverRequest = $.post(window.location.origin + '/api/item/add/' + id, function (result) {
+				if (result) this.setState({ items: result });
+			}.bind(this));
+
+			$('.tohide').animate({ opacity: '0.0' }, 'fast');
+			$('.glyphicon').animate({ opacity: '0.0', 'font-size': '35px' }, "slow");
+			$('.glyphicon').animate({ opacity: '1.0', 'font-size': '20px' }, "slow", function () {
+				$('.tohide').animate({ opacity: '1.0' }, 'slow');
+			});
+		},
+
+		render: function render() {
+			var _this = this;
+
+			var indents = [];
+
+			this.state.indents.forEach(function (item) {
+				if (item.quantity >= 1) {
+					var pathId = '/products/' + item.id;
+					indents.push(_react2.default.createElement(
+						'div',
+						{ className: 'product', key: item.id },
+						_react2.default.createElement(
+							_reactRouter.Link,
+							{ to: pathId },
+							_react2.default.createElement('img', { src: item.image_url }),
+							_react2.default.createElement(
+								'div',
+								{ className: 'description' },
+								_react2.default.createElement(
+									'p',
+									null,
+									item.title
+								),
+								_react2.default.createElement(
+									'p',
+									null,
+									'$',
+									item.price
+								)
+							)
+						),
+						_react2.default.createElement('input', { type: 'submit', value: 'add to cart', onClick: function onClick() {
+								return _this.addItem(item.id);
+							} })
+					));
+				}
+			});
+
+			return _react2.default.createElement(
+				'div',
+				{ className: 'products' },
+				indents
+			);
+		}
+	});
+
+	exports.default = products;
+
+/***/ },
+/* 241 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(180);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var product = _react2.default.createClass({
+		displayName: 'product',
+
+		getInitialState: function getInitialState() {
+			return {
+				indents: {}
+			};
+		},
+
+		componentDidMount: function componentDidMount() {
+			this.serverRequest = $.get(window.location.origin + '/api/inventory/' + this.props.params.id, function (result) {
+				this.setState({
+					indents: result
+				});
+			}.bind(this));
+		},
+
+		componentWillUnmount: function componentWillUnmount() {
+			this.serverRequest.abort();
+		},
+
+		addItem: function addItem() {
+			this.serverRequest = $.post(window.location.origin + '/api/item/add/' + this.props.params.id, function (result) {}.bind(this));
+			$('.tohide').animate({ opacity: '0.0' }, 'fast');
+			$('.glyphicon').animate({ opacity: '0.0', 'font-size': '35px' }, "slow");
+			$('.glyphicon').animate({ opacity: '1.0', 'font-size': '20px' }, "slow", function () {
+				$('.tohide').animate({ opacity: '1.0' }, 'slow');
+			});
+		},
+
+		render: function render() {
+			return _react2.default.createElement(
+				'div',
+				{ className: 'single-product' },
+				_react2.default.createElement(
+					'div',
+					{ className: 'item' },
+					_react2.default.createElement(
+						'h3',
+						null,
+						this.state.indents.title,
+						' | $',
+						this.state.indents.price
+					),
+					_react2.default.createElement('img', { src: this.state.indents.image_url }),
+					_react2.default.createElement('input', { type: 'submit', value: 'Add to cart', onClick: this.addItem })
+				),
+				_react2.default.createElement(
+					'div',
+					{ className: 'product-description' },
+					_react2.default.createElement(
+						'p',
+						null,
+						this.state.indents.description
+					)
+				)
+			);
+		}
+	});
+
+	exports.default = product;
+
+/***/ },
 /* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -27869,18 +27880,13 @@
 					{ className: 'nav' },
 					_react2.default.createElement(
 						_reactRouter.Link,
-						{ to: '/cart' },
-						'Cart'
-					),
-					_react2.default.createElement(
-						_reactRouter.Link,
 						{ to: '/products' },
 						'Products'
 					),
 					_react2.default.createElement(
 						_reactRouter.Link,
-						{ to: '/profile' },
-						'Profile'
+						{ to: '/cart' },
+						_react2.default.createElement('span', { className: 'glyphicon glyphicon-shopping-cart' })
 					)
 				),
 				_react2.default.createElement(
@@ -27963,7 +27969,7 @@
 
 	var _reactRouter = __webpack_require__(180);
 
-	var _product = __webpack_require__(240);
+	var _product = __webpack_require__(241);
 
 	var _product2 = _interopRequireDefault(_product);
 
