@@ -22,7 +22,7 @@ html, body {
 
 .nav {
 	width: 50%;
-	height: 20%;
+	height: 25%;
 	float: left;
 	position: fixed;
 	background: rgba(0, 0, 0, 0.8);
@@ -30,7 +30,7 @@ html, body {
 
 .nav a {
 	margin-left: 50px;
-	padding-top: 7.5%;
+	padding-top: 9%;
 	display: inline-block;
 	font-size: 20px;
 	color: rgba(245, 241, 222, 1);
@@ -44,7 +44,7 @@ html, body {
 
 .signin {
 	width: 50%;
-	height: 20%;
+	height: 25%;
 	position: fixed;
 	right: 0;
 	background: rgba(0, 0, 0, 0.8);
@@ -53,7 +53,7 @@ html, body {
 .signin a {
 	float: right;
 	margin-right: 30px;
-	padding-top: 7.5%;
+	padding-top: 9%;
 	display: inline-block;
 	color: rgba(245, 241, 222, 1);
 	text-decoration: none !important;
@@ -66,7 +66,7 @@ html, body {
 
 .logout {
 	width: 50%;
-	height: 20%;
+	height: 25%;
 	padding-right: 1%;
 	right: 0;
 	position: fixed;
@@ -77,7 +77,7 @@ html, body {
 .logout a {
 	float: right;
 	margin-right: 30px;
-	padding-top: 7.5%;
+	padding-top: 9%;
 	display: inline-block;
 	color: rgba(245, 241, 222, 1);
 	text-decoration: none !important;
@@ -89,13 +89,12 @@ html, body {
 }
 
 .welcome {
-	display: block;
-	padding-top: 6%;
-	margin-right: 2%;
+	margin-top: 8%;
+	margin-left: 40px;
+	position: fixed;
 	float: right;
-	color: rgba(245, 241, 222, 1);
+	color: rgba(100, 100, 95, 1);
 	z-index: +1;
-	position:relative;
 	font-family: 'Dosis', sans-serif;
 }
 
@@ -128,7 +127,7 @@ html, body {
 	}
 
 	.welcome {
-		padding-top: 13%;
+		margin-top: 3%;
 		margin-right: 4%;
 	}
 
@@ -146,8 +145,14 @@ html, body {
 		}
 
 		.welcome {
-			padding-top: 10%;
+			margin-top: 8%;
 		}
+	}
+
+	/* prevents browser to bump css on rotation for mobile */
+	body {
+		-webkit-text-size-adjust: 100%;
+		-ms-text-size-adjust: 100%;
 	}
 }
 
@@ -183,7 +188,7 @@ html, body {
 	}
 
 	.welcome {
-		padding-top: 23%;
+		margin-top: 23%;
 		margin-right: 5%;
 	}
 }
@@ -309,9 +314,11 @@ html, body {
 	.product {
 		max-width: 43%;
 	}
+	
 	.products {
-		padding-top: 20%;
+		padding-top: 10%;
 	}
+
 	.total-price h1 {
 		font-size: 20px;
 	}
@@ -320,6 +327,14 @@ html, body {
 @media handheld, screen and (max-width: 500px){
 	.product {
 		max-width: 90%;
+	}
+
+	.products {
+		padding-top: 30%;
+	}
+
+	.total-price {
+		padding-top: 10%;
 	}
 }
 
@@ -382,6 +397,12 @@ html, body {
 	}
 }
 
+@media handheld, screen and (max-width: 500px){
+	.single-product {
+		padding-top: 30%;
+	}
+}
+
 /* /cart page styles */
 .inStock {
 	color: rgba(245, 241, 222, 1);
@@ -417,9 +438,21 @@ html, body {
 	color: red;
 }
 
+@media handheld, screen and (max-width: 1000px){
+	.form-group {
+		padding-top: 25%;
+	}
+}
+
 @media handheld, screen and (max-width: 750px){
 	.form-group {
-		padding-top: 20%;
+		padding-top: 30%;
+	}
+
+	@media handheld, screen and (max-height: 420px){
+		.form-group {
+			padding-top: 15%;
+		}
 	}
 }
 
