@@ -27,8 +27,23 @@ const products = React.createClass({
 			if(result) this.setState({items: result});
 		}.bind(this));
 
-		$('.glyphicon').animate({opacity: '0.0'}, "slow");
-		$('.glyphicon').animate({opacity: '1.0'}, "slow");
+		//animation to sinalize product was added to cart
+		$('.glyphicon').animate({  borderSpacing: -360 }, {
+			step: function(now,fx) {
+				$(this).css('-webkit-transform','rotate('+now+'deg)'); 
+				$(this).css('-moz-transform','rotate('+now+'deg)');
+				$(this).css('transform','rotate('+now+'deg)');
+			},
+			duration:'slow'
+		},'linear');
+		$('.glyphicon').animate({  borderSpacing: 360 }, {
+			step: function(now,fx) {
+				$(this).css('-webkit-transform','rotate('+now+'deg)'); 
+				$(this).css('-moz-transform','rotate('+now+'deg)');
+				$(this).css('transform','rotate('+now+'deg)');
+			},
+			duration:'slow'
+		},'linear');
 	},
 
 	render: function() {

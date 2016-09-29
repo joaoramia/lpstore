@@ -27543,8 +27543,23 @@
 					this.setState({ items: result, price: currentPrice });
 				}
 			}.bind(this));
-			$('.glyphicon').animate({ opacity: '0.0' }, "slow");
-			$('.glyphicon').animate({ opacity: '1.0' }, "slow");
+			//animation to sinalize product was added to cart
+			$('.glyphicon').animate({ borderSpacing: -360 }, {
+				step: function step(now, fx) {
+					$(this).css('-webkit-transform', 'rotate(' + now + 'deg)');
+					$(this).css('-moz-transform', 'rotate(' + now + 'deg)');
+					$(this).css('transform', 'rotate(' + now + 'deg)');
+				},
+				duration: 'slow'
+			}, 'linear');
+			$('.glyphicon').animate({ borderSpacing: 360 }, {
+				step: function step(now, fx) {
+					$(this).css('-webkit-transform', 'rotate(' + now + 'deg)');
+					$(this).css('-moz-transform', 'rotate(' + now + 'deg)');
+					$(this).css('transform', 'rotate(' + now + 'deg)');
+				},
+				duration: 'slow'
+			}, 'linear');
 		},
 
 		removeItem: function removeItem(id) {
@@ -27555,8 +27570,23 @@
 				});
 				this.setState({ items: result, price: currentPrice });
 			}.bind(this));
-			$('.glyphicon').animate({ opacity: '0.0' }, "slow");
-			$('.glyphicon').animate({ opacity: '1.0' }, "slow");
+			//animation to sinalize product was removed from cart
+			$('.glyphicon').animate({ borderSpacing: -360 }, {
+				step: function step(now, fx) {
+					$(this).css('-webkit-transform', 'rotate(' + now + 'deg)');
+					$(this).css('-moz-transform', 'rotate(' + now + 'deg)');
+					$(this).css('transform', 'rotate(' + now + 'deg)');
+				},
+				duration: 'slow'
+			}, 'linear');
+			$('.glyphicon').animate({ borderSpacing: 360 }, {
+				step: function step(now, fx) {
+					$(this).css('-webkit-transform', 'rotate(' + now + 'deg)');
+					$(this).css('-moz-transform', 'rotate(' + now + 'deg)');
+					$(this).css('transform', 'rotate(' + now + 'deg)');
+				},
+				duration: 'slow'
+			}, 'linear');
 		},
 
 		render: function render() {
@@ -27668,8 +27698,23 @@
 				if (result) this.setState({ items: result });
 			}.bind(this));
 
-			$('.glyphicon').animate({ opacity: '0.0' }, "slow");
-			$('.glyphicon').animate({ opacity: '1.0' }, "slow");
+			//animation to sinalize product was added to cart
+			$('.glyphicon').animate({ borderSpacing: -360 }, {
+				step: function step(now, fx) {
+					$(this).css('-webkit-transform', 'rotate(' + now + 'deg)');
+					$(this).css('-moz-transform', 'rotate(' + now + 'deg)');
+					$(this).css('transform', 'rotate(' + now + 'deg)');
+				},
+				duration: 'slow'
+			}, 'linear');
+			$('.glyphicon').animate({ borderSpacing: 360 }, {
+				step: function step(now, fx) {
+					$(this).css('-webkit-transform', 'rotate(' + now + 'deg)');
+					$(this).css('-moz-transform', 'rotate(' + now + 'deg)');
+					$(this).css('transform', 'rotate(' + now + 'deg)');
+				},
+				duration: 'slow'
+			}, 'linear');
 		},
 
 		render: function render() {
@@ -27761,8 +27806,24 @@
 
 		addItem: function addItem() {
 			this.serverRequest = $.post(window.location.origin + '/api/item/add/' + this.props.params.id, function (result) {}.bind(this));
-			$('.glyphicon').animate({ opacity: '0.0' }, "slow");
-			$('.glyphicon').animate({ opacity: '1.0' }, "slow");
+
+			//animation to sinalize product was added to cart
+			$('.glyphicon').animate({ borderSpacing: -360 }, {
+				step: function step(now, fx) {
+					$(this).css('-webkit-transform', 'rotate(' + now + 'deg)');
+					$(this).css('-moz-transform', 'rotate(' + now + 'deg)');
+					$(this).css('transform', 'rotate(' + now + 'deg)');
+				},
+				duration: 'slow'
+			}, 'linear');
+			$('.glyphicon').animate({ borderSpacing: 360 }, {
+				step: function step(now, fx) {
+					$(this).css('-webkit-transform', 'rotate(' + now + 'deg)');
+					$(this).css('-moz-transform', 'rotate(' + now + 'deg)');
+					$(this).css('transform', 'rotate(' + now + 'deg)');
+				},
+				duration: 'slow'
+			}, 'linear');
 		},
 
 		render: function render() {

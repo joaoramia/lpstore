@@ -66,8 +66,23 @@ const cart = React.createClass({
 				this.setState({items: result, price: currentPrice});
 			}
 		}.bind(this));
-		$('.glyphicon').animate({opacity: '0.0'}, "slow");
-		$('.glyphicon').animate({opacity: '1.0'}, "slow");
+		//animation to sinalize product was added to cart
+		$('.glyphicon').animate({  borderSpacing: -360 }, {
+			step: function(now,fx) {
+				$(this).css('-webkit-transform','rotate('+now+'deg)'); 
+				$(this).css('-moz-transform','rotate('+now+'deg)');
+				$(this).css('transform','rotate('+now+'deg)');
+			},
+			duration:'slow'
+		},'linear');
+		$('.glyphicon').animate({  borderSpacing: 360 }, {
+			step: function(now,fx) {
+				$(this).css('-webkit-transform','rotate('+now+'deg)'); 
+				$(this).css('-moz-transform','rotate('+now+'deg)');
+				$(this).css('transform','rotate('+now+'deg)');
+			},
+			duration:'slow'
+		},'linear');
 	},
 
 	removeItem: function(id) {
@@ -78,8 +93,23 @@ const cart = React.createClass({
 			});
 			this.setState({items: result, price: currentPrice});
 		}.bind(this));
-		$('.glyphicon').animate({opacity: '0.0'}, "slow");
-		$('.glyphicon').animate({opacity: '1.0'}, "slow");
+		//animation to sinalize product was removed from cart
+		$('.glyphicon').animate({  borderSpacing: -360 }, {
+			step: function(now,fx) {
+				$(this).css('-webkit-transform','rotate('+now+'deg)'); 
+				$(this).css('-moz-transform','rotate('+now+'deg)');
+				$(this).css('transform','rotate('+now+'deg)');
+			},
+			duration:'slow'
+		},'linear');
+		$('.glyphicon').animate({  borderSpacing: 360 }, {
+			step: function(now,fx) {
+				$(this).css('-webkit-transform','rotate('+now+'deg)'); 
+				$(this).css('-moz-transform','rotate('+now+'deg)');
+				$(this).css('transform','rotate('+now+'deg)');
+			},
+			duration:'slow'
+		},'linear');
 	},
 
 	render: function() {
