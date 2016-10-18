@@ -341,7 +341,7 @@ html, body {
 /* /products/:id page styles */
 
 .single-product {
-	padding-top: 10%;
+	padding-top: 13%;
 	margin-left: 2%;
 	max-width: 90%;
 	color: rgba(245, 241, 222, 1);
@@ -364,7 +364,14 @@ html, body {
 	margin-right: 0;
 	max-width: 60%;
 	color: rgba(245, 241, 222, 1);
-	background: rgba(0,0,0,0.5);
+	background: rgba(0,0,0,0.8);
+}
+
+.product-description p {
+	padding-top: 2%;
+	width: 90%;
+	margin-right: auto;
+    margin-left: auto;
 }
 
 .item input{
@@ -382,6 +389,21 @@ html, body {
 
 .item input:hover {
 	background: rgba(140, 69, 5, 1);
+}
+
+#video {
+	padding-top: 2%;
+	padding-bottom: 2%;
+	width: 90%;
+	margin-right: auto;
+    margin-left: auto;
+}
+
+#video h5 {
+	font-size: 17px;
+	font-weight: 900;
+	text-align: left;
+	padding-left: 10%;
 }
 
 @media handheld, screen and (max-width: 750px){

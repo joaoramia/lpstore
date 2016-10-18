@@ -27849,9 +27849,9 @@
 						'p',
 						null,
 						this.state.indents.description
-					)
-				),
-				_react2.default.createElement(_video2.default, { videourl: this.state.indents.video_url })
+					),
+					_react2.default.createElement(_video2.default, { videourl: this.state.indents.video_url })
+				)
 			);
 		}
 	});
@@ -27883,9 +27883,18 @@
 
 			if (this.props.videourl) {
 				videofound = _react2.default.createElement(
-					'video',
-					{ id: 'video', controls: true },
-					_react2.default.createElement('source', { src: this.props.videourl, type: 'video/mp4' })
+					'div',
+					null,
+					_react2.default.createElement(
+						'h5',
+						null,
+						'Selected song:'
+					),
+					_react2.default.createElement(
+						'video',
+						{ id: 'video', controls: true },
+						_react2.default.createElement('source', { src: this.props.videourl, type: 'video/mp4' })
+					)
 				);
 			} else {
 				videofound = _react2.default.createElement(

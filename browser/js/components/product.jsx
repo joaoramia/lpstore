@@ -54,8 +54,8 @@ const product = React.createClass({
 				</div>
 				<div className='product-description'>
 					<p>{this.state.indents.description}</p>
+					<Video videourl={this.state.indents.video_url} />
 				</div>
-				<Video videourl={this.state.indents.video_url} />
 			</div>
 		)
 	}

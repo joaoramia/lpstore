@@ -94,7 +94,7 @@ var seedInventory = function() {
 		type: 'rock',
 		price: 25,
 		description: "Surrealistic Pillow is the second album by American rock band Jefferson Airplane, released on February 1, 1967, by RCA Victor. It is the first album by the band with vocalist Grace Slick and drummer Spencer Dryden.",
-		image_url: 'http://vignette1.wikia.nocookie.net/lyricwiki/images/2/21/Jefferson_Airplane_-_Surrealistic_Pillow.jpg/revision/latest?cb=20140507003355',
+		image_url: 'http://images.hhv.de/catalog/new_shop_405x405/00248/248778.jpg',
 		video_url: 'surrealisticpillow.mp4'
 	}, {
 		title: 'Unknown Pleasures',

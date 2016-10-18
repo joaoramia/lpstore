@@ -6,7 +6,13 @@ const Video = React.createClass({
 		let videofound;
 
 		if(this.props.videourl){
-			videofound = <video id='video' controls><source src={this.props.videourl} type="video/mp4"></source></video>
+			videofound = <div>
+				<h5>Selected song:</h5>
+				<video id='video' controls>
+					<source src={this.props.videourl} type="video/mp4">
+					</source>
+				</video>
+			</div>
 		}
 		else {
 			videofound = <p id='no-video'>No video available</p>
