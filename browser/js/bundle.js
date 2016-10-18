@@ -27897,11 +27897,7 @@
 					)
 				);
 			} else {
-				videofound = _react2.default.createElement(
-					'p',
-					{ id: 'no-video' },
-					'No video available'
-				);
+				videofound = null;
 			}
 			return _react2.default.createElement(
 				'div',

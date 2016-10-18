@@ -15,7 +15,7 @@ const Video = React.createClass({
 			</div>
 		}
 		else {
-			videofound = <p id='no-video'>No video available</p>
+			videofound = null;
 		}
 		return (
 			<div id='video'>
