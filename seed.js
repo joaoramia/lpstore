@@ -40,7 +40,8 @@ var seedInventory = function() {
 		type: 'rock',
 		price: 20,
 		description: 'The Doors is the self-titled debut album by the American rock band the Doors, released in January 1967. The album features their breakthrough single "Light My Fire" and the lengthy song "The End" with its Oedipal spoken word section.',
-		image_url: 'https://images.genius.com/8a56c61fc3f6278bf6c60c674ac7a7e8.953x953x1.jpg'
+		image_url: 'https://images.genius.com/8a56c61fc3f6278bf6c60c674ac7a7e8.953x953x1.jpg',
+		video_url: 'thedoors.mp4'
 	}, {
 		title: 'Strange Days',
 		author: 'The Doors',
@@ -48,7 +49,8 @@ var seedInventory = function() {
 		type: 'rock',
 		price: 25,
 		description: 'Strange Days is the second studio album by the American rock band the Doors, released in September 1967. It was a commercial success, initially earning a gold record and reaching No. 3 on the Billboard 200 albums chart.',
-		image_url: 'http://static1.squarespace.com/static/5311d009e4b08cb688151314/5546871ae4b0ba2fd4ee6207/55897d51e4b0157c14e8700e/1435074146773/3486401400_5c3599eb66.jpg?format=500w'
+		image_url: 'http://static1.squarespace.com/static/5311d009e4b08cb688151314/5546871ae4b0ba2fd4ee6207/55897d51e4b0157c14e8700e/1435074146773/3486401400_5c3599eb66.jpg?format=500w',
+		video_url: 'strangedays.mp4'
 	}, {
 		title: 'The Soft Parade',
 		author: 'The Doors',
@@ -56,7 +58,8 @@ var seedInventory = function() {
 		type: 'rock',
 		price: 25,
 		description: 'The Soft Parade is the fourth studio album by the American rock band the Doors, and was released on July 18, 1969, on Elektra Records. It saw the group departing from the material that encompassed their past three albums.',
-		image_url: 'http://www.thedoors.com/wp-content/uploads/2016/04/71xT8N9hyrL._SL1500_.jpg'
+		image_url: 'http://www.thedoors.com/wp-content/uploads/2016/04/71xT8N9hyrL._SL1500_.jpg',
+		video_url: 'softparade.mp4'
 	}, {
 		title: 'Animalisms',
 		author: 'The Animals',
@@ -64,7 +67,8 @@ var seedInventory = function() {
 		type: 'rock',
 		price: 20,
 		description: 'Animalisms is the third British album by British group the Animals. It has a track listing generally similar to the American version, Animalization, that was released two months later.',
-		image_url: 'http://www.propermusic.com/cache/images/f/4/5/f45415730f867c9b833e9450f47e0f19.jpg'
+		image_url: 'http://www.propermusic.com/cache/images/f/4/5/f45415730f867c9b833e9450f47e0f19.jpg',
+		video_url: 'animalisms.mp4'
 	}, {
 		title: "Who's Next",
 		author: 'The Who',
@@ -72,7 +76,8 @@ var seedInventory = function() {
 		type: 'rock',
 		price: 20,
 		description: "Who's Next is the fifth studio album by English rock band The Who. It developed from the aborted Lifehouse project, a multi-media rock opera written by the group's Pete Townshend as a follow-up to the band's 1969 album Tommy.",
-		image_url: 'https://images-na.ssl-images-amazon.com/images/I/61Ab-td5fbL.jpg'
+		image_url: 'https://images-na.ssl-images-amazon.com/images/I/61Ab-td5fbL.jpg',
+		video_url: 'whosnext.mp4'
 	}, {
 		title: 'Houses of the Holy',
 		author: 'Led Zeppelin',
@@ -80,7 +85,8 @@ var seedInventory = function() {
 		type: 'rock',
 		price: 35,
 		description: 'Houses of the Holy is the fifth studio album by English rock band Led Zeppelin, released on 28 March 1973 by Atlantic Records.',
-		image_url: 'http://www.feelnumb.com/wp-content/uploads/2009/10/Led-Zeppelin-Houses-of-the-Holy-album-cover-location-giants-causeway.jpg'
+		image_url: 'http://www.feelnumb.com/wp-content/uploads/2009/10/Led-Zeppelin-Houses-of-the-Holy-album-cover-location-giants-causeway.jpg',
+		video_url: 'housesoftheholy.mp4'
 	}, {
 		title: 'Surrealistic Pillow',
 		author: 'Jefferson Airplane',
@@ -88,7 +94,8 @@ var seedInventory = function() {
 		type: 'rock',
 		price: 25,
 		description: "Surrealistic Pillow is the second album by American rock band Jefferson Airplane, released on February 1, 1967, by RCA Victor. It is the first album by the band with vocalist Grace Slick and drummer Spencer Dryden.",
-		image_url: 'http://vignette1.wikia.nocookie.net/lyricwiki/images/2/21/Jefferson_Airplane_-_Surrealistic_Pillow.jpg/revision/latest?cb=20140507003355'
+		image_url: 'http://vignette1.wikia.nocookie.net/lyricwiki/images/2/21/Jefferson_Airplane_-_Surrealistic_Pillow.jpg/revision/latest?cb=20140507003355',
+		video_url: 'surrealisticpillow.mp4'
 	}, {
 		title: 'Unknown Pleasures',
 		author: 'Joy Division',
@@ -96,7 +103,8 @@ var seedInventory = function() {
 		type: 'rock',
 		price: 25,
 		description: "Unknown Pleasures is the debut studio album by the English rock band Joy Division. It followed an abandoned session for RCA Records, and was eventually recorded and mixed over three weekends at Strawberry Studios, Stockport in April 1979 with record producer Martin Hannett. The album was released on 15 June 1979 on Tony Wilson's Factory Records.",
-		image_url: 'http://laughingsquid.com/wp-content/uploads/2015/02/unknownpleasures.jpg'
+		image_url: 'http://laughingsquid.com/wp-content/uploads/2015/02/unknownpleasures.jpg',
+		video_url: 'unknownpleasures.mp4'
 	}, {
 		title: 'Dig That Groove Baby',
 		author: 'Toy Dolls',
@@ -104,7 +112,8 @@ var seedInventory = function() {
 		type: 'rock',
 		price: 15,
 		description: "Dig That Groove Baby is the first full-length album by the Punk band Toy Dolls, released in 1983. It is considered by many fans to be the best work by the band and contains future live staples such as 'Nellie the Elephant' and 'Firey Jack'.",
-		image_url: 'https://upload.wikimedia.org/wikipedia/en/1/15/Dig_that_groove_baby.jpg'
+		image_url: 'https://upload.wikimedia.org/wikipedia/en/1/15/Dig_that_groove_baby.jpg',
+		video_url: 'digthatgroovebaby.mp4'
 	}];
 
 	var creatingInventory = inventories.map(function(inventoryObj) {

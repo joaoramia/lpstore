@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
+import Video from './video.jsx';
 
 const product = React.createClass({
 	getInitialState: function() {
@@ -54,6 +55,7 @@ const product = React.createClass({
 				<div className='product-description'>
 					<p>{this.state.indents.description}</p>
 				</div>
+				<Video videourl={this.state.indents.video_url} />
 			</div>
 		)
 	}

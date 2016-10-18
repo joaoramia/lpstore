@@ -36,6 +36,9 @@ var inventory = db.define('inventory', {
     },
     image_url: {
         type: Sequelize.STRING
+    },
+    video_url: {
+        type: Sequelize.STRING
     }
 });
 

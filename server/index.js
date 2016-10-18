@@ -32,6 +32,7 @@ app.use(bodyParser.json());
 
 app.use(express.static(path.join(__dirname + '/../browser')));
 app.use(express.static(path.join(__dirname + '/../node_modules')));
+app.use(express.static(path.join(__dirname + '/../videos')));
 
 // authentication routes for login, logout and signup
 app.use('/', require('./authentication'));
