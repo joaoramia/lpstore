@@ -27620,18 +27620,24 @@
 				));
 			});
 
+			var price = null;
+
+			if (this.state.price) {
+				price = _react2.default.createElement(
+					'h1',
+					null,
+					'Total price: $',
+					this.state.price
+				);
+			}
+
 			return _react2.default.createElement(
 				'div',
 				{ className: 'products' },
 				_react2.default.createElement(
 					'div',
 					{ className: 'total-price' },
-					_react2.default.createElement(
-						'h1',
-						null,
-						'Total price: $',
-						this.state.price
-					),
+					price,
 					!items.length ? null : _react2.default.createElement(
 						'button',
 						{ id: 'customButton', onClick: this.handlePayment },

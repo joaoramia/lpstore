@@ -113,7 +113,7 @@ const cart = React.createClass({
 	},
 
 	render: function() {
-		const items = [];
+		let items = [];
 		Object.keys(this.state.items).forEach(key => {
 			const pathId = '/products/' + key;
 			items.push(
@@ -127,10 +127,16 @@ const cart = React.createClass({
 				</div>)
 		});
 
+		let price = null;
+
+		if(this.state.price) {
+			price = <h1>Total price: ${this.state.price}</h1>;
+		}
+
 		return (
 			<div className="products">
 				<div className="total-price">
-					<h1>Total price: ${this.state.price}</h1>
+					{price}
 					{!items.length ? null : <button id="customButton" onClick={this.handlePayment}>Purchase</button>}
 				</div>
 				{items}
