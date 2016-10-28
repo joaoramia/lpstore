@@ -24,7 +24,7 @@ router.use(passport.session());
 
  // When we give a cookie to the browser, it is just the userId (encrypted with our secret).
 passport.serializeUser(function (user, done) {
-    done(null, user.id)
+    done(null, user.id);
 });
 
 // When we receive a cookie from the browser, we use that id to set our req.user
@@ -39,7 +39,6 @@ passport.deserializeUser(function (req, id, done) {
 
 router.use('/auth/google', require('./google'));
 router.use('/auth/facebook', require('./facebook'));
-// router.use('/auth/twitter', require('./twitter'));
 
 router.post('/login', function(req, res) {
 	user.findOne({where: {email: req.body.email}})

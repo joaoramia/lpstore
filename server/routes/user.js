@@ -5,13 +5,13 @@ var user = db.model('user');
 
 module.exports = router;
 
-router.get('/', function (req, res, next) {
-	user.findAll()
-	.then(function(users) {
-		res.json(users)
-	})
-	.catch(next);
-});
+// router.get('/', function (req, res, next) {
+// 	user.findAll()
+// 	.then(function(users) {
+// 		res.json(users)
+// 	})
+// 	.catch(next);
+// });
 
 router.get('/:id', function (req, res, next) {
 	user.findAll({
